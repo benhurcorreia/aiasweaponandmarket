@@ -1,0 +1,577 @@
+{
+  "name": "Ecossistema IA — NYT vs OpenAI",
+  "description": "Análise multinível do caso NYT vs OpenAI (2023-2024).",
+  "layers": [
+    {
+      "id": "45258841",
+      "name": "Conhecimento",
+      "color": "#3498DB",
+      "order": 0,
+      "visible": true
+    },
+    {
+      "id": "b129a3ce",
+      "name": "Infraestrutura",
+      "color": "#27AE60",
+      "order": 1,
+      "visible": true
+    },
+    {
+      "id": "ac5346c3",
+      "name": "Negócios",
+      "color": "#E74C3C",
+      "order": 2,
+      "visible": true
+    }
+  ],
+  "actors": {
+    "d764e3ed": {
+      "id": "d764e3ed",
+      "name": "New York Times",
+      "actor_type": "Mídia",
+      "color": "",
+      "layers": [
+        "45258841",
+        "ac5346c3"
+      ],
+      "attributes": {},
+      "positions": {
+        "45258841": [
+          408.3891187851532,
+          178.25640198945976
+        ],
+        "ac5346c3": [
+          422.8361503857159,
+          206.17230615208427
+        ]
+      }
+    },
+    "4ee2d308": {
+      "id": "4ee2d308",
+      "name": "OpenAI",
+      "actor_type": "Empresa",
+      "color": "",
+      "layers": [
+        "45258841",
+        "b129a3ce",
+        "ac5346c3"
+      ],
+      "attributes": {},
+      "positions": {
+        "45258841": [
+          280.61508703666243,
+          60.0
+        ],
+        "b129a3ce": [
+          443.62288254207823,
+          217.7543994046178
+        ],
+        "ac5346c3": [
+          206.26223391235087,
+          155.7757845375899
+        ]
+      }
+    },
+    "0009611e": {
+      "id": "0009611e",
+      "name": "Microsoft",
+      "actor_type": "Empresa",
+      "color": "",
+      "layers": [
+        "b129a3ce",
+        "ac5346c3"
+      ],
+      "attributes": {},
+      "positions": {
+        "b129a3ce": [
+          317.9094067400376,
+          113.95720645725487
+        ],
+        "ac5346c3": [
+          477.64257349346155,
+          62.85570009482785
+        ]
+      }
+    },
+    "68527ec7": {
+      "id": "68527ec7",
+      "name": "Common Crawl",
+      "actor_type": "Plataforma",
+      "color": "",
+      "layers": [
+        "45258841"
+      ],
+      "attributes": {},
+      "positions": {
+        "45258841": [
+          144.2218417752454,
+          64.90484032662901
+        ]
+      }
+    },
+    "70e2b006": {
+      "id": "70e2b006",
+      "name": "Nvidia",
+      "actor_type": "Empresa",
+      "color": "",
+      "layers": [
+        "b129a3ce"
+      ],
+      "attributes": {},
+      "positions": {
+        "b129a3ce": [
+          181.69635028552054,
+          60.0
+        ]
+      }
+    },
+    "55f9b8df": {
+      "id": "55f9b8df",
+      "name": "ChatGPT",
+      "actor_type": "Tecnologia",
+      "color": "",
+      "layers": [
+        "ac5346c3"
+      ],
+      "attributes": {},
+      "positions": {
+        "ac5346c3": [
+          274.12447117956367,
+          250.05232700727794
+        ]
+      }
+    },
+    "cbd284be": {
+      "id": "cbd284be",
+      "name": "Microsoft Copilot",
+      "actor_type": "Tecnologia",
+      "color": "",
+      "layers": [
+        "ac5346c3"
+      ],
+      "attributes": {},
+      "positions": {
+        "ac5346c3": [
+          524.0319614494779,
+          133.79815884932822
+        ]
+      }
+    },
+    "e77995a8": {
+      "id": "e77995a8",
+      "name": "Wirecutter",
+      "actor_type": "Mídia",
+      "color": "",
+      "layers": [
+        "45258841",
+        "ac5346c3"
+      ],
+      "attributes": {},
+      "positions": {
+        "45258841": [
+          340.6179303636163,
+          340.0
+        ],
+        "ac5346c3": [
+          225.49321590666827,
+          340.0
+        ]
+      }
+    },
+    "c1462746": {
+      "id": "c1462746",
+      "name": "GPTBot",
+      "actor_type": "Tecnologia",
+      "color": "",
+      "layers": [
+        "45258841"
+      ],
+      "attributes": {},
+      "positions": {
+        "45258841": [
+          540.0,
+          210.54089233987818
+        ]
+      }
+    },
+    "87463bae": {
+      "id": "87463bae",
+      "name": "Tribunal SDNY",
+      "actor_type": "Regulador",
+      "color": "",
+      "layers": [
+        "ac5346c3"
+      ],
+      "attributes": {},
+      "positions": {
+        "ac5346c3": [
+          540.0,
+          266.9899489782472
+        ]
+      }
+    },
+    "866a1d7b": {
+      "id": "866a1d7b",
+      "name": "News/Media Alliance",
+      "actor_type": "ONG",
+      "color": "",
+      "layers": [
+        "ac5346c3"
+      ],
+      "attributes": {},
+      "positions": {
+        "ac5346c3": [
+          309.49240117817135,
+          138.42805465984003
+        ]
+      }
+    },
+    "c26d19ae": {
+      "id": "c26d19ae",
+      "name": "Authors Guild",
+      "actor_type": "ONG",
+      "color": "",
+      "layers": [
+        "ac5346c3"
+      ],
+      "attributes": {},
+      "positions": {
+        "ac5346c3": [
+          60.0,
+          148.6217263392839
+        ]
+      }
+    },
+    "094a0d83": {
+      "id": "094a0d83",
+      "name": "Google",
+      "actor_type": "Empresa",
+      "color": "",
+      "layers": [
+        "45258841",
+        "b129a3ce",
+        "ac5346c3"
+      ],
+      "attributes": {},
+      "positions": {
+        "45258841": [
+          60.0,
+          199.56283131266648
+        ],
+        "b129a3ce": [
+          60.0,
+          77.5117892053553
+        ],
+        "ac5346c3": [
+          296.5968230541996,
+          60.0
+        ]
+      }
+    },
+    "1b7da2b1": {
+      "id": "1b7da2b1",
+      "name": "Amazon AWS",
+      "actor_type": "Empresa",
+      "color": "",
+      "layers": [
+        "b129a3ce"
+      ],
+      "attributes": {},
+      "positions": {
+        "b129a3ce": [
+          540.0,
+          340.0
+        ]
+      }
+    }
+  },
+  "relationships": [
+    {
+      "id": "13c31e7b",
+      "source_id": "d764e3ed",
+      "target_id": "4ee2d308",
+      "layer_id": "45258841",
+      "rel_type": "extração",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "dados de treino",
+      "attributes": {},
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "23352b2e",
+      "source_id": "68527ec7",
+      "target_id": "4ee2d308",
+      "layer_id": "45258841",
+      "rel_type": "fornecimento",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "corpus web",
+      "attributes": {},
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "c758ff50",
+      "source_id": "c1462746",
+      "target_id": "d764e3ed",
+      "layer_id": "45258841",
+      "rel_type": "extração",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "scraping",
+      "attributes": {},
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "5dfdba04",
+      "source_id": "e77995a8",
+      "target_id": "d764e3ed",
+      "layer_id": "45258841",
+      "rel_type": "cooperação",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "conteúdo",
+      "attributes": {},
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "b4a9601c",
+      "source_id": "68527ec7",
+      "target_id": "094a0d83",
+      "layer_id": "45258841",
+      "rel_type": "fornecimento",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "dados web",
+      "attributes": {},
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "7da206ff",
+      "source_id": "0009611e",
+      "target_id": "4ee2d308",
+      "layer_id": "b129a3ce",
+      "rel_type": "investimento",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "US$13bi + Azure",
+      "attributes": {},
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "6ea4753f",
+      "source_id": "70e2b006",
+      "target_id": "0009611e",
+      "layer_id": "b129a3ce",
+      "rel_type": "fornecimento",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "GPUs",
+      "attributes": {},
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "8670341d",
+      "source_id": "70e2b006",
+      "target_id": "094a0d83",
+      "layer_id": "b129a3ce",
+      "rel_type": "fornecimento",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "GPUs",
+      "attributes": {},
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "37444ba6",
+      "source_id": "1b7da2b1",
+      "target_id": "4ee2d308",
+      "layer_id": "b129a3ce",
+      "rel_type": "competição",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "cloud",
+      "attributes": {},
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "50e1d496",
+      "source_id": "55f9b8df",
+      "target_id": "d764e3ed",
+      "layer_id": "ac5346c3",
+      "rel_type": "competição",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "canibalização",
+      "attributes": {},
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "b24c7acb",
+      "source_id": "cbd284be",
+      "target_id": "d764e3ed",
+      "layer_id": "ac5346c3",
+      "rel_type": "competição",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "substituição",
+      "attributes": {},
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "ba884db4",
+      "source_id": "4ee2d308",
+      "target_id": "55f9b8df",
+      "layer_id": "ac5346c3",
+      "rel_type": "integração",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "produto",
+      "attributes": {},
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "72fcf9c7",
+      "source_id": "d764e3ed",
+      "target_id": "87463bae",
+      "layer_id": "ac5346c3",
+      "rel_type": "regulação",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "ação judicial",
+      "attributes": {},
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "1e751162",
+      "source_id": "866a1d7b",
+      "target_id": "d764e3ed",
+      "layer_id": "ac5346c3",
+      "rel_type": "cooperação",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "amicus brief",
+      "attributes": {},
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "8a085096",
+      "source_id": "c26d19ae",
+      "target_id": "4ee2d308",
+      "layer_id": "ac5346c3",
+      "rel_type": "conflito",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "ação coletiva",
+      "attributes": {},
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "0fd2a682",
+      "source_id": "0009611e",
+      "target_id": "cbd284be",
+      "layer_id": "ac5346c3",
+      "rel_type": "integração",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "Bing/Office",
+      "attributes": {},
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "9cd0eec2",
+      "source_id": "e77995a8",
+      "target_id": "55f9b8df",
+      "layer_id": "ac5346c3",
+      "rel_type": "dependência",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "conteúdo reproduzido",
+      "attributes": {},
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "703674f2",
+      "source_id": "094a0d83",
+      "target_id": "4ee2d308",
+      "layer_id": "ac5346c3",
+      "rel_type": "competição",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "mercado IA",
+      "attributes": {},
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "7f5dd976",
+      "source_id": "4ee2d308",
+      "target_id": "4ee2d308",
+      "layer_id": "",
+      "rel_type": "integração",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "treino→infra",
+      "attributes": {},
+      "source_layer_id": "45258841",
+      "target_layer_id": "b129a3ce"
+    },
+    {
+      "id": "9a05be48",
+      "source_id": "4ee2d308",
+      "target_id": "4ee2d308",
+      "layer_id": "",
+      "rel_type": "integração",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "deploy→mercado",
+      "attributes": {},
+      "source_layer_id": "b129a3ce",
+      "target_layer_id": "ac5346c3"
+    },
+    {
+      "id": "1d800b30",
+      "source_id": "d764e3ed",
+      "target_id": "d764e3ed",
+      "layer_id": "",
+      "rel_type": "dependência",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "arquivo centenário",
+      "attributes": {},
+      "source_layer_id": "45258841",
+      "target_layer_id": "ac5346c3"
+    },
+    {
+      "id": "5dcff378",
+      "source_id": "0009611e",
+      "target_id": "0009611e",
+      "layer_id": "",
+      "rel_type": "integração",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "Azure→Copilot",
+      "attributes": {},
+      "source_layer_id": "b129a3ce",
+      "target_layer_id": "ac5346c3"
+    }
+  ],
+  "settings": {}
+}

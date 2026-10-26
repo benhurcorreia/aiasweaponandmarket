@@ -1,0 +1,3920 @@
+{
+  "name": "Ecossistema IA — Guerra EUA–Irã (9 camadas)",
+  "description": "Modelagem multiplex (uma camada por tipo de relação) convertida de figura1/figura2.",
+  "layers": [
+    {
+      "id": "L_fornecimento",
+      "name": "Fornecimento",
+      "color": "#E74C3C",
+      "order": 0,
+      "visible": true
+    },
+    {
+      "id": "L_investimento",
+      "name": "Investimento",
+      "color": "#E74C3C",
+      "order": 1,
+      "visible": true
+    },
+    {
+      "id": "L_extracao",
+      "name": "Extração",
+      "color": "#E74C3C",
+      "order": 2,
+      "visible": true
+    },
+    {
+      "id": "L_regulacao",
+      "name": "Regulação",
+      "color": "#9B59B6",
+      "order": 3,
+      "visible": true
+    },
+    {
+      "id": "L_dependencia",
+      "name": "Dependência",
+      "color": "#27AE60",
+      "order": 4,
+      "visible": true
+    },
+    {
+      "id": "L_conflito",
+      "name": "Conflito",
+      "color": "#C0392B",
+      "order": 5,
+      "visible": true
+    },
+    {
+      "id": "L_integracao",
+      "name": "Integração",
+      "color": "#27AE60",
+      "order": 6,
+      "visible": true
+    },
+    {
+      "id": "L_cooperacao",
+      "name": "Cooperação",
+      "color": "#16A085",
+      "order": 7,
+      "visible": true
+    },
+    {
+      "id": "L_competicao",
+      "name": "Competição",
+      "color": "#3498DB",
+      "order": 8,
+      "visible": true
+    }
+  ],
+  "actors": {
+    "8b3ecd14": {
+      "id": "8b3ecd14",
+      "name": "Anthropic",
+      "actor_type": "Empresa",
+      "color": "",
+      "layers": [
+        "L_competicao",
+        "L_conflito",
+        "L_cooperacao",
+        "L_dependencia"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_competicao": [
+          433.8,
+          380.6
+        ],
+        "L_conflito": [
+          433.8,
+          380.6
+        ],
+        "L_cooperacao": [
+          433.8,
+          380.6
+        ],
+        "L_dependencia": [
+          433.8,
+          380.6
+        ]
+      }
+    },
+    "aba9d7e1": {
+      "id": "aba9d7e1",
+      "name": "OpenAI",
+      "actor_type": "Empresa",
+      "color": "",
+      "layers": [
+        "L_competicao",
+        "L_cooperacao",
+        "L_fornecimento",
+        "L_integracao"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_competicao": [
+          505.0,
+          351.4
+        ],
+        "L_cooperacao": [
+          505.0,
+          351.4
+        ],
+        "L_fornecimento": [
+          505.0,
+          351.4
+        ],
+        "L_integracao": [
+          505.0,
+          351.4
+        ]
+      }
+    },
+    "73608a07": {
+      "id": "73608a07",
+      "name": "Google DeepMind",
+      "actor_type": "Empresa",
+      "color": "",
+      "layers": [
+        "L_competicao",
+        "L_dependencia",
+        "L_fornecimento",
+        "L_integracao"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_competicao": [
+          448.8,
+          340.6
+        ],
+        "L_dependencia": [
+          448.8,
+          340.6
+        ],
+        "L_fornecimento": [
+          448.8,
+          340.6
+        ],
+        "L_integracao": [
+          448.8,
+          340.6
+        ]
+      }
+    },
+    "63a115cf": {
+      "id": "63a115cf",
+      "name": "xAI",
+      "actor_type": "Empresa",
+      "color": "",
+      "layers": [
+        "L_competicao",
+        "L_fornecimento",
+        "L_integracao"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_competicao": [
+          358.3,
+          348.9
+        ],
+        "L_fornecimento": [
+          358.3,
+          348.9
+        ],
+        "L_integracao": [
+          358.3,
+          348.9
+        ]
+      }
+    },
+    "7ac7acc8": {
+      "id": "7ac7acc8",
+      "name": "Meta AI",
+      "actor_type": "Empresa",
+      "color": "",
+      "layers": [
+        "L_competicao"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_competicao": [
+          281.0,
+          402.3
+        ]
+      }
+    },
+    "9f641329": {
+      "id": "9f641329",
+      "name": "Palantir",
+      "actor_type": "Empresa",
+      "color": "",
+      "layers": [
+        "L_cooperacao",
+        "L_dependencia",
+        "L_fornecimento",
+        "L_integracao"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_cooperacao": [
+          494.7,
+          308.7
+        ],
+        "L_dependencia": [
+          494.7,
+          308.7
+        ],
+        "L_fornecimento": [
+          494.7,
+          308.7
+        ],
+        "L_integracao": [
+          494.7,
+          308.7
+        ]
+      }
+    },
+    "f1c8ca56": {
+      "id": "f1c8ca56",
+      "name": "Anduril",
+      "actor_type": "Empresa",
+      "color": "",
+      "layers": [
+        "L_cooperacao",
+        "L_fornecimento"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_cooperacao": [
+          588.3,
+          344.1
+        ],
+        "L_fornecimento": [
+          588.3,
+          344.1
+        ]
+      }
+    },
+    "13af87a1": {
+      "id": "13af87a1",
+      "name": "Pentágono / DoD",
+      "actor_type": "Governo",
+      "color": "",
+      "layers": [
+        "L_conflito",
+        "L_cooperacao",
+        "L_dependencia",
+        "L_fornecimento",
+        "L_investimento",
+        "L_regulacao"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_conflito": [
+          474.2,
+          313.9
+        ],
+        "L_cooperacao": [
+          474.2,
+          313.9
+        ],
+        "L_dependencia": [
+          474.2,
+          313.9
+        ],
+        "L_fornecimento": [
+          474.2,
+          313.9
+        ],
+        "L_investimento": [
+          474.2,
+          313.9
+        ],
+        "L_regulacao": [
+          474.2,
+          313.9
+        ]
+      }
+    },
+    "e3e8f307": {
+      "id": "e3e8f307",
+      "name": "CDAO",
+      "actor_type": "Governo",
+      "color": "",
+      "layers": [
+        "L_regulacao"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_regulacao": [
+          428.3,
+          403.0
+        ]
+      }
+    },
+    "45452f7f": {
+      "id": "45452f7f",
+      "name": "AWS Gov",
+      "actor_type": "Plataforma",
+      "color": "",
+      "layers": [
+        "L_conflito",
+        "L_dependencia",
+        "L_fornecimento"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_conflito": [
+          552.7,
+          242.7
+        ],
+        "L_dependencia": [
+          552.7,
+          242.7
+        ],
+        "L_fornecimento": [
+          552.7,
+          242.7
+        ]
+      }
+    },
+    "be1e3b2b": {
+      "id": "be1e3b2b",
+      "name": "NSA",
+      "actor_type": "Governo",
+      "color": "",
+      "layers": [
+        "L_dependencia"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_dependencia": [
+          250.6,
+          615.0
+        ]
+      }
+    },
+    "0a10f579": {
+      "id": "0a10f579",
+      "name": "Tribunal Federal",
+      "actor_type": "Regulador",
+      "color": "",
+      "layers": [
+        "L_regulacao"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_regulacao": [
+          45.0,
+          211.2
+        ]
+      }
+    },
+    "4c333204": {
+      "id": "4c333204",
+      "name": "Casa Branca",
+      "actor_type": "Governo",
+      "color": "",
+      "layers": [
+        "L_cooperacao"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_cooperacao": [
+          76.3,
+          562.9
+        ]
+      }
+    },
+    "309094be": {
+      "id": "309094be",
+      "name": "Israel / IAF",
+      "actor_type": "Governo",
+      "color": "",
+      "layers": [
+        "L_cooperacao"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_cooperacao": [
+          254.3,
+          213.1
+        ]
+      }
+    },
+    "4b85aab0": {
+      "id": "4b85aab0",
+      "name": "CISA",
+      "actor_type": "Regulador",
+      "color": "",
+      "layers": [
+        "L_cooperacao"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_cooperacao": [
+          489.9,
+          514.5
+        ]
+      }
+    },
+    "8668fd19": {
+      "id": "8668fd19",
+      "name": "Nvidia",
+      "actor_type": "Empresa",
+      "color": "",
+      "layers": [
+        "L_competicao",
+        "L_dependencia",
+        "L_fornecimento",
+        "L_regulacao"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_competicao": [
+          667.4,
+          221.0
+        ],
+        "L_dependencia": [
+          667.4,
+          221.0
+        ],
+        "L_fornecimento": [
+          667.4,
+          221.0
+        ],
+        "L_regulacao": [
+          667.4,
+          221.0
+        ]
+      }
+    },
+    "b449692e": {
+      "id": "b449692e",
+      "name": "Microsoft/Azure",
+      "actor_type": "Empresa",
+      "color": "",
+      "layers": [
+        "L_dependencia",
+        "L_fornecimento"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_dependencia": [
+          534.8,
+          148.1
+        ],
+        "L_fornecimento": [
+          534.8,
+          148.1
+        ]
+      }
+    },
+    "7af5ac2d": {
+      "id": "7af5ac2d",
+      "name": "Google Cloud",
+      "actor_type": "Plataforma",
+      "color": "",
+      "layers": [
+        "L_conflito",
+        "L_dependencia",
+        "L_fornecimento"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_conflito": [
+          588.8,
+          255.9
+        ],
+        "L_dependencia": [
+          588.8,
+          255.9
+        ],
+        "L_fornecimento": [
+          588.8,
+          255.9
+        ]
+      }
+    },
+    "b754baa7": {
+      "id": "b754baa7",
+      "name": "Governo EUA",
+      "actor_type": "Regulador",
+      "color": "",
+      "layers": [
+        "L_regulacao"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_regulacao": [
+          947.8,
+          63.1
+        ]
+      }
+    },
+    "e58231d4": {
+      "id": "e58231d4",
+      "name": "Países do Golfo",
+      "actor_type": "Governo",
+      "color": "",
+      "layers": [
+        "L_dependencia",
+        "L_investimento"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_dependencia": [
+          434.3,
+          178.4
+        ],
+        "L_investimento": [
+          434.3,
+          178.4
+        ]
+      }
+    },
+    "1eebdd34": {
+      "id": "1eebdd34",
+      "name": "TSMC",
+      "actor_type": "Empresa",
+      "color": "",
+      "layers": [
+        "L_competicao",
+        "L_conflito",
+        "L_fornecimento",
+        "L_regulacao"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_competicao": [
+          877.9,
+          169.3
+        ],
+        "L_conflito": [
+          877.9,
+          169.3
+        ],
+        "L_fornecimento": [
+          877.9,
+          169.3
+        ],
+        "L_regulacao": [
+          877.9,
+          169.3
+        ]
+      }
+    },
+    "e61cc9b1": {
+      "id": "e61cc9b1",
+      "name": "Irã / IRGC",
+      "actor_type": "Governo",
+      "color": "",
+      "layers": [
+        "L_conflito",
+        "L_extracao"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_conflito": [
+          716.9,
+          267.5
+        ],
+        "L_extracao": [
+          716.9,
+          267.5
+        ]
+      }
+    },
+    "cd7d787f": {
+      "id": "cd7d787f",
+      "name": "China / Huawei",
+      "actor_type": "Governo",
+      "color": "",
+      "layers": [
+        "L_competicao",
+        "L_extracao"
+      ],
+      "attributes": {},
+      "positions": {
+        "L_competicao": [
+          934.5,
+          209.6
+        ],
+        "L_extracao": [
+          934.5,
+          209.6
+        ]
+      }
+    }
+  },
+  "relationships": [
+    {
+      "id": "b50cdd3c",
+      "source_id": "aba9d7e1",
+      "target_id": "8b3ecd14",
+      "layer_id": "L_competicao",
+      "rel_type": "competição",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "GPT vs. Claude — competição na fronteira LLM",
+      "attributes": {
+        "estrato": "modelos"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "cd001531",
+      "source_id": "aba9d7e1",
+      "target_id": "73608a07",
+      "layer_id": "L_competicao",
+      "rel_type": "competição",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "GPT vs. Gemini — fronteira LLM",
+      "attributes": {
+        "estrato": "modelos"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "6308c09e",
+      "source_id": "8b3ecd14",
+      "target_id": "73608a07",
+      "layer_id": "L_competicao",
+      "rel_type": "competição",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "Claude vs. Gemini",
+      "attributes": {
+        "estrato": "modelos"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "3f14b8a1",
+      "source_id": "63a115cf",
+      "target_id": "aba9d7e1",
+      "layer_id": "L_competicao",
+      "rel_type": "competição",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "Grok vs. GPT",
+      "attributes": {
+        "estrato": "modelos"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "f606617d",
+      "source_id": "63a115cf",
+      "target_id": "8b3ecd14",
+      "layer_id": "L_competicao",
+      "rel_type": "competição",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "Grok vs. Claude",
+      "attributes": {
+        "estrato": "modelos"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "6db78ff4",
+      "source_id": "63a115cf",
+      "target_id": "73608a07",
+      "layer_id": "L_competicao",
+      "rel_type": "competição",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "Grok vs. Gemini",
+      "attributes": {
+        "estrato": "modelos"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "b804db81",
+      "source_id": "7ac7acc8",
+      "target_id": "aba9d7e1",
+      "layer_id": "L_competicao",
+      "rel_type": "competição",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "Llama open-source vs. GPT",
+      "attributes": {
+        "estrato": "modelos"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "67c2b7af",
+      "source_id": "7ac7acc8",
+      "target_id": "8b3ecd14",
+      "layer_id": "L_competicao",
+      "rel_type": "competição",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "Llama open-source vs. Claude",
+      "attributes": {
+        "estrato": "modelos"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "ff16a6bc",
+      "source_id": "7ac7acc8",
+      "target_id": "73608a07",
+      "layer_id": "L_competicao",
+      "rel_type": "competição",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "Llama open-source vs. Gemini",
+      "attributes": {
+        "estrato": "modelos"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "0a3adbdf",
+      "source_id": "13af87a1",
+      "target_id": "8b3ecd14",
+      "layer_id": "L_conflito",
+      "rel_type": "conflito",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "supply chain risk §3252 — blacklisting + memo Kirsten Davies (6 mar.)",
+      "attributes": {
+        "estrato": "modelos"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "6107a0b4",
+      "source_id": "9f641329",
+      "target_id": "13af87a1",
+      "layer_id": "L_fornecimento",
+      "rel_type": "fornecimento",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "Maven — Program of Record (mar. 2026) — middleware insubstituível",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "9991054f",
+      "source_id": "9f641329",
+      "target_id": "309094be",
+      "layer_id": "L_cooperacao",
+      "rel_type": "cooperação",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "parceria formal MoD Israel — targeting Epic Fury",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "07b0dffa",
+      "source_id": "f1c8ca56",
+      "target_id": "13af87a1",
+      "layer_id": "L_fornecimento",
+      "rel_type": "fornecimento",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "Lattice / contra-UAS ($20bi contrato)",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "d3671d11",
+      "source_id": "9f641329",
+      "target_id": "f1c8ca56",
+      "layer_id": "L_cooperacao",
+      "rel_type": "cooperação",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "integradores militares consolidados",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "f7f8917f",
+      "source_id": "aba9d7e1",
+      "target_id": "13af87a1",
+      "layer_id": "L_fornecimento",
+      "rel_type": "fornecimento",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "acordo classificado + guardrails + pessoal OpenAI in-loop (mar. 2026)",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "d79a845b",
+      "source_id": "73608a07",
+      "target_id": "13af87a1",
+      "layer_id": "L_fornecimento",
+      "rel_type": "fornecimento",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "Gemini for Gov / TPUs em ambientes superclassificados",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "7832fa36",
+      "source_id": "63a115cf",
+      "target_id": "13af87a1",
+      "layer_id": "L_fornecimento",
+      "rel_type": "fornecimento",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "Grok IL-5 / GenAI.mil — 1.2M usuários em 2 meses",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "a39d7a16",
+      "source_id": "9f641329",
+      "target_id": "aba9d7e1",
+      "layer_id": "L_integracao",
+      "rel_type": "integração",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "GPT via Maven AIP",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "a8373aad",
+      "source_id": "9f641329",
+      "target_id": "73608a07",
+      "layer_id": "L_integracao",
+      "rel_type": "integração",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "Gemini via Maven AIP",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "ea6c0bef",
+      "source_id": "9f641329",
+      "target_id": "63a115cf",
+      "layer_id": "L_integracao",
+      "rel_type": "integração",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "Grok via Maven AIP",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "321779be",
+      "source_id": "f1c8ca56",
+      "target_id": "aba9d7e1",
+      "layer_id": "L_cooperacao",
+      "rel_type": "cooperação",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "OpenAI+Anduril: drones contra-UAS — ameaças letais em tempo real",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "365a415b",
+      "source_id": "45452f7f",
+      "target_id": "13af87a1",
+      "layer_id": "L_fornecimento",
+      "rel_type": "fornecimento",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "cloud IL-5/IL-6 — actante militar declarado após ataques iranianos",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "a1616ffd",
+      "source_id": "be1e3b2b",
+      "target_id": "8b3ecd14",
+      "layer_id": "L_dependencia",
+      "rel_type": "dependência",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "Mythos Preview — cyberops contínuos apesar do blacklisting (Axios)",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "348ce11c",
+      "source_id": "0a10f579",
+      "target_id": "13af87a1",
+      "layer_id": "L_regulacao",
+      "rel_type": "regulação",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "liminar Lin J. (24–26 mar.) → revertida DC Circuit (8 abr.) — deferência executivo",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "8bdf79a7",
+      "source_id": "4c333204",
+      "target_id": "8b3ecd14",
+      "layer_id": "L_cooperacao",
+      "rel_type": "cooperação",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "mediação Wiles+Bessent+Amodei (17 abr. 2026) — compromisso parcial",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "cd9cc2c2",
+      "source_id": "e3e8f307",
+      "target_id": "13af87a1",
+      "layer_id": "L_regulacao",
+      "rel_type": "regulação",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "RAI Principles 2021 → AI-first 2026: velocidade > alignment perfeita",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "1531eef1",
+      "source_id": "309094be",
+      "target_id": "13af87a1",
+      "layer_id": "L_cooperacao",
+      "rel_type": "cooperação",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "co-executor Epic Fury — IAF + CENTCOM",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "6464b0d4",
+      "source_id": "4b85aab0",
+      "target_id": "8b3ecd14",
+      "layer_id": "L_cooperacao",
+      "rel_type": "cooperação",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "Project Glasswing — Mythos para defesa infraestrutura crítica",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "8da0fd38",
+      "source_id": "4b85aab0",
+      "target_id": "aba9d7e1",
+      "layer_id": "L_cooperacao",
+      "rel_type": "cooperação",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "Trusted Access for Cyber (TAC) — defensores verificados (abr. 2026)",
+      "attributes": {
+        "estrato": "deployments"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "2d54e908",
+      "source_id": "8668fd19",
+      "target_id": "45452f7f",
+      "layer_id": "L_fornecimento",
+      "rel_type": "fornecimento",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "GPUs H100 — nós militares",
+      "attributes": {
+        "estrato": "infra"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "eeb5c772",
+      "source_id": "8668fd19",
+      "target_id": "b449692e",
+      "layer_id": "L_fornecimento",
+      "rel_type": "fornecimento",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "GPUs H100 — Azure Gov",
+      "attributes": {
+        "estrato": "infra"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "8f871408",
+      "source_id": "8668fd19",
+      "target_id": "7af5ac2d",
+      "layer_id": "L_fornecimento",
+      "rel_type": "fornecimento",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "GPUs A100",
+      "attributes": {
+        "estrato": "infra"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "b3997919",
+      "source_id": "1eebdd34",
+      "target_id": "8668fd19",
+      "layer_id": "L_fornecimento",
+      "rel_type": "fornecimento",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "chips 5nm/3nm — rota via Ormuz interrompida",
+      "attributes": {
+        "estrato": "infra"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "cba39a45",
+      "source_id": "e61cc9b1",
+      "target_id": "45452f7f",
+      "layer_id": "L_conflito",
+      "rel_type": "conflito",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "drones suicidas IRGC → data centers AWS Bahrein/UAE (2 mar. 2026)",
+      "attributes": {
+        "estrato": "infra"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "e4f66ffe",
+      "source_id": "e61cc9b1",
+      "target_id": "7af5ac2d",
+      "layer_id": "L_conflito",
+      "rel_type": "conflito",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "infraestrutura Big Tech = 'alvo estratégico do inimigo' (propaganda iraniana)",
+      "attributes": {
+        "estrato": "infra"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "e9522952",
+      "source_id": "e61cc9b1",
+      "target_id": "1eebdd34",
+      "layer_id": "L_conflito",
+      "rel_type": "conflito",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "fechamento Ormuz → escassez bromo, He, H2SO4 → paralisação TSMC",
+      "attributes": {
+        "estrato": "infra"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "ae74a9a4",
+      "source_id": "13af87a1",
+      "target_id": "e58231d4",
+      "layer_id": "L_investimento",
+      "rel_type": "investimento",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "vendas armas $16bi — lock-in geopolítico segurança",
+      "attributes": {
+        "estrato": "infra"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "06d8f340",
+      "source_id": "e58231d4",
+      "target_id": "45452f7f",
+      "layer_id": "L_dependencia",
+      "rel_type": "dependência",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "superclusters → ímãs de risco bélico — lock-in militar/tecnológico",
+      "attributes": {
+        "estrato": "infra"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "8247bd05",
+      "source_id": "b754baa7",
+      "target_id": "8668fd19",
+      "layer_id": "L_regulacao",
+      "rel_type": "regulação",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "AI Diffusion Framework — export control H100",
+      "attributes": {
+        "estrato": "infra"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "39418d3d",
+      "source_id": "b754baa7",
+      "target_id": "1eebdd34",
+      "layer_id": "L_regulacao",
+      "rel_type": "regulação",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "export controls Taiwan + CASR satelital",
+      "attributes": {
+        "estrato": "infra"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "7d8d871b",
+      "source_id": "13af87a1",
+      "target_id": "45452f7f",
+      "layer_id": "L_dependencia",
+      "rel_type": "dependência",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "cloud soberana = infraestrutura crítica declarada",
+      "attributes": {
+        "estrato": "infra"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "23ca654f",
+      "source_id": "13af87a1",
+      "target_id": "b449692e",
+      "layer_id": "L_dependencia",
+      "rel_type": "dependência",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "Azure Gov — JWCC",
+      "attributes": {
+        "estrato": "infra"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "33b4a2fe",
+      "source_id": "cd7d787f",
+      "target_id": "e61cc9b1",
+      "layer_id": "L_extracao",
+      "rel_type": "extração",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "infraestrutura Huawei/ZTE destruída por CENTCOM — perda estratégica bilionária",
+      "attributes": {
+        "estrato": "infra"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "9290a780",
+      "source_id": "cd7d787f",
+      "target_id": "1eebdd34",
+      "layer_id": "L_competicao",
+      "rel_type": "competição",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "SMIC vs. TSMC — export controls ocidentais aceleram corrida",
+      "attributes": {
+        "estrato": "infra"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "538b1380",
+      "source_id": "cd7d787f",
+      "target_id": "8668fd19",
+      "layer_id": "L_competicao",
+      "rel_type": "competição",
+      "direction": "bidirectional",
+      "weight": 1.0,
+      "label": "Huawei Ascend vs. H100 — export controls favorecem desenvolvimento doméstico",
+      "attributes": {
+        "estrato": "infra"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "1f606b37",
+      "source_id": "73608a07",
+      "target_id": "7af5ac2d",
+      "layer_id": "L_dependencia",
+      "rel_type": "dependência",
+      "direction": "source_to_target",
+      "weight": 1.0,
+      "label": "Gemini compute via TPUs — integração vertical Google",
+      "attributes": {
+        "estrato": "inter"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "7192a99c",
+      "source_id": "9f641329",
+      "target_id": "45452f7f",
+      "layer_id": "L_dependencia",
+      "rel_type": "dependência",
+      "direction": "directed",
+      "weight": 1,
+      "label": "",
+      "attributes": {
+        "estrato": "infra"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "a54615d7",
+      "source_id": "9f641329",
+      "target_id": "8668fd19",
+      "layer_id": "L_dependencia",
+      "rel_type": "dependência",
+      "direction": "directed",
+      "weight": 1,
+      "label": "",
+      "attributes": {
+        "estrato": "infra"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    },
+    {
+      "id": "d71caf68",
+      "source_id": "63a115cf",
+      "target_id": "7ac7acc8",
+      "layer_id": "L_competicao",
+      "rel_type": "competição",
+      "direction": "directed",
+      "weight": 1,
+      "label": "",
+      "attributes": {
+        "estrato": "modelos"
+      },
+      "source_layer_id": "",
+      "target_layer_id": ""
+    }
+  ],
+  "settings": {},
+  "snapshots": [
+    {
+      "name": "Pré-conflito (fev/2026)",
+      "data": {
+        "name": "Pré-conflito (fev/2026)",
+        "description": "",
+        "layers": [
+          {
+            "id": "L_fornecimento",
+            "name": "Fornecimento",
+            "color": "#E74C3C",
+            "order": 0,
+            "visible": true
+          },
+          {
+            "id": "L_investimento",
+            "name": "Investimento",
+            "color": "#E74C3C",
+            "order": 1,
+            "visible": true
+          },
+          {
+            "id": "L_extracao",
+            "name": "Extração",
+            "color": "#E74C3C",
+            "order": 2,
+            "visible": true
+          },
+          {
+            "id": "L_regulacao",
+            "name": "Regulação",
+            "color": "#9B59B6",
+            "order": 3,
+            "visible": true
+          },
+          {
+            "id": "L_dependencia",
+            "name": "Dependência",
+            "color": "#27AE60",
+            "order": 4,
+            "visible": true
+          },
+          {
+            "id": "L_conflito",
+            "name": "Conflito",
+            "color": "#C0392B",
+            "order": 5,
+            "visible": true
+          },
+          {
+            "id": "L_integracao",
+            "name": "Integração",
+            "color": "#27AE60",
+            "order": 6,
+            "visible": true
+          },
+          {
+            "id": "L_cooperacao",
+            "name": "Cooperação",
+            "color": "#16A085",
+            "order": 7,
+            "visible": true
+          },
+          {
+            "id": "L_competicao",
+            "name": "Competição",
+            "color": "#3498DB",
+            "order": 8,
+            "visible": true
+          }
+        ],
+        "actors": {
+          "ac9eda64": {
+            "id": "ac9eda64",
+            "name": "Anthropic",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_competicao",
+              "L_fornecimento",
+              "L_integracao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_competicao": [
+                433.8,
+                380.6
+              ],
+              "L_fornecimento": [
+                433.8,
+                380.6
+              ],
+              "L_integracao": [
+                433.8,
+                380.6
+              ]
+            }
+          },
+          "595cc045": {
+            "id": "595cc045",
+            "name": "OpenAI",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_competicao",
+              "L_conflito",
+              "L_cooperacao",
+              "L_fornecimento",
+              "L_integracao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_competicao": [
+                505.0,
+                351.4
+              ],
+              "L_conflito": [
+                505.0,
+                351.4
+              ],
+              "L_cooperacao": [
+                505.0,
+                351.4
+              ],
+              "L_fornecimento": [
+                505.0,
+                351.4
+              ],
+              "L_integracao": [
+                505.0,
+                351.4
+              ]
+            }
+          },
+          "6b2a54e1": {
+            "id": "6b2a54e1",
+            "name": "Google DeepMind",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_competicao",
+              "L_dependencia",
+              "L_fornecimento",
+              "L_integracao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_competicao": [
+                448.8,
+                340.6
+              ],
+              "L_dependencia": [
+                448.8,
+                340.6
+              ],
+              "L_fornecimento": [
+                448.8,
+                340.6
+              ],
+              "L_integracao": [
+                448.8,
+                340.6
+              ]
+            }
+          },
+          "efee7132": {
+            "id": "efee7132",
+            "name": "xAI",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_competicao",
+              "L_fornecimento"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_competicao": [
+                358.3,
+                348.9
+              ],
+              "L_fornecimento": [
+                358.3,
+                348.9
+              ]
+            }
+          },
+          "6c618f59": {
+            "id": "6c618f59",
+            "name": "Meta AI",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_competicao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_competicao": [
+                281.0,
+                402.3
+              ]
+            }
+          },
+          "c3ba17fd": {
+            "id": "c3ba17fd",
+            "name": "Palantir",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_cooperacao",
+              "L_dependencia",
+              "L_fornecimento",
+              "L_integracao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_cooperacao": [
+                494.7,
+                308.7
+              ],
+              "L_dependencia": [
+                494.7,
+                308.7
+              ],
+              "L_fornecimento": [
+                494.7,
+                308.7
+              ],
+              "L_integracao": [
+                494.7,
+                308.7
+              ]
+            }
+          },
+          "d587e01d": {
+            "id": "d587e01d",
+            "name": "Anduril",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_cooperacao",
+              "L_fornecimento"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_cooperacao": [
+                588.3,
+                344.1
+              ],
+              "L_fornecimento": [
+                588.3,
+                344.1
+              ]
+            }
+          },
+          "e9830c41": {
+            "id": "e9830c41",
+            "name": "Pentágono / DoD",
+            "actor_type": "Governo",
+            "color": "",
+            "layers": [
+              "L_cooperacao",
+              "L_dependencia",
+              "L_fornecimento",
+              "L_regulacao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_cooperacao": [
+                474.2,
+                313.9
+              ],
+              "L_dependencia": [
+                474.2,
+                313.9
+              ],
+              "L_fornecimento": [
+                474.2,
+                313.9
+              ],
+              "L_regulacao": [
+                474.2,
+                313.9
+              ]
+            }
+          },
+          "525dd4dc": {
+            "id": "525dd4dc",
+            "name": "CDAO",
+            "actor_type": "Governo",
+            "color": "",
+            "layers": [
+              "L_fornecimento",
+              "L_regulacao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_fornecimento": [
+                428.3,
+                403.0
+              ],
+              "L_regulacao": [
+                428.3,
+                403.0
+              ]
+            }
+          },
+          "5b394531": {
+            "id": "5b394531",
+            "name": "AWS Gov",
+            "actor_type": "Plataforma",
+            "color": "",
+            "layers": [
+              "L_competicao",
+              "L_conflito",
+              "L_dependencia",
+              "L_fornecimento",
+              "L_investimento"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_competicao": [
+                552.7,
+                242.7
+              ],
+              "L_conflito": [
+                552.7,
+                242.7
+              ],
+              "L_dependencia": [
+                552.7,
+                242.7
+              ],
+              "L_fornecimento": [
+                552.7,
+                242.7
+              ],
+              "L_investimento": [
+                552.7,
+                242.7
+              ]
+            }
+          },
+          "33dc474c": {
+            "id": "33dc474c",
+            "name": "Israel / IAF",
+            "actor_type": "Governo",
+            "color": "",
+            "layers": [
+              "L_cooperacao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_cooperacao": [
+                254.3,
+                213.1
+              ]
+            }
+          },
+          "bdcecd98": {
+            "id": "bdcecd98",
+            "name": "Nvidia",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_dependencia",
+              "L_fornecimento",
+              "L_regulacao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_dependencia": [
+                667.4,
+                221.0
+              ],
+              "L_fornecimento": [
+                667.4,
+                221.0
+              ],
+              "L_regulacao": [
+                667.4,
+                221.0
+              ]
+            }
+          },
+          "6c9c285b": {
+            "id": "6c9c285b",
+            "name": "Microsoft/Azure",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_competicao",
+              "L_dependencia",
+              "L_fornecimento"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_competicao": [
+                534.8,
+                148.1
+              ],
+              "L_dependencia": [
+                534.8,
+                148.1
+              ],
+              "L_fornecimento": [
+                534.8,
+                148.1
+              ]
+            }
+          },
+          "0bb09093": {
+            "id": "0bb09093",
+            "name": "Google Cloud",
+            "actor_type": "Plataforma",
+            "color": "",
+            "layers": [
+              "L_competicao",
+              "L_dependencia",
+              "L_fornecimento",
+              "L_investimento"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_competicao": [
+                588.8,
+                255.9
+              ],
+              "L_dependencia": [
+                588.8,
+                255.9
+              ],
+              "L_fornecimento": [
+                588.8,
+                255.9
+              ],
+              "L_investimento": [
+                588.8,
+                255.9
+              ]
+            }
+          },
+          "597ccaa2": {
+            "id": "597ccaa2",
+            "name": "Governo EUA",
+            "actor_type": "Regulador",
+            "color": "",
+            "layers": [
+              "L_regulacao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_regulacao": [
+                947.8,
+                63.1
+              ]
+            }
+          },
+          "9bff2576": {
+            "id": "9bff2576",
+            "name": "Países do Golfo",
+            "actor_type": "Governo",
+            "color": "",
+            "layers": [
+              "L_investimento"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_investimento": [
+                434.3,
+                178.4
+              ]
+            }
+          },
+          "a899bf70": {
+            "id": "a899bf70",
+            "name": "TSMC",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_competicao",
+              "L_fornecimento",
+              "L_regulacao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_competicao": [
+                877.9,
+                169.3
+              ],
+              "L_fornecimento": [
+                877.9,
+                169.3
+              ],
+              "L_regulacao": [
+                877.9,
+                169.3
+              ]
+            }
+          },
+          "f3d14097": {
+            "id": "f3d14097",
+            "name": "China / Huawei",
+            "actor_type": "Governo",
+            "color": "",
+            "layers": [
+              "L_competicao",
+              "L_investimento"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_competicao": [
+                934.5,
+                209.6
+              ],
+              "L_investimento": [
+                934.5,
+                209.6
+              ]
+            }
+          },
+          "ceaeb168": {
+            "id": "ceaeb168",
+            "name": "Irã / IRGC",
+            "actor_type": "Governo",
+            "color": "",
+            "layers": [
+              "L_conflito",
+              "L_investimento"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_conflito": [
+                716.9,
+                267.5
+              ],
+              "L_investimento": [
+                716.9,
+                267.5
+              ]
+            }
+          }
+        },
+        "relationships": [
+          {
+            "id": "6f8b17e9",
+            "source_id": "595cc045",
+            "target_id": "ac9eda64",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "fronteira LLM — GPT vs. Claude",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "8b06ac4c",
+            "source_id": "595cc045",
+            "target_id": "6b2a54e1",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "fronteira LLM — GPT vs. Gemini",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "20b982aa",
+            "source_id": "ac9eda64",
+            "target_id": "6b2a54e1",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Claude vs. Gemini",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "658e436f",
+            "source_id": "efee7132",
+            "target_id": "595cc045",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Grok vs. GPT",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "dcc66236",
+            "source_id": "efee7132",
+            "target_id": "ac9eda64",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Grok vs. Claude",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "42c97350",
+            "source_id": "efee7132",
+            "target_id": "6b2a54e1",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Grok vs. Gemini",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "2e5cf5cb",
+            "source_id": "6c618f59",
+            "target_id": "595cc045",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Llama open-source vs. GPT",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "65f20e8f",
+            "source_id": "6c618f59",
+            "target_id": "ac9eda64",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Llama open-source vs. Claude",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "a7aa6697",
+            "source_id": "6c618f59",
+            "target_id": "6b2a54e1",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Llama open-source vs. Gemini",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "27f95ab0",
+            "source_id": "595cc045",
+            "target_id": "ceaeb168",
+            "layer_id": "L_conflito",
+            "rel_type": "conflito",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "derrubada Storm-2035 — campanha influência iraniana (ago. 2024)",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "9422ade8",
+            "source_id": "c3ba17fd",
+            "target_id": "e9830c41",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "Maven Smart System / TITAN ($99.8M — serviços militares)",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "2ab8b1ad",
+            "source_id": "c3ba17fd",
+            "target_id": "33dc474c",
+            "layer_id": "L_cooperacao",
+            "rel_type": "cooperação",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "parceria formal Palantir-MoD Israel (2024)",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "7cb8fadc",
+            "source_id": "d587e01d",
+            "target_id": "e9830c41",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "Lattice / sistemas contra-UAS",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "0ff9fbb4",
+            "source_id": "c3ba17fd",
+            "target_id": "d587e01d",
+            "layer_id": "L_cooperacao",
+            "rel_type": "cooperação",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "integradores militares do ecossistema",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "86a78970",
+            "source_id": "595cc045",
+            "target_id": "525dd4dc",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "OpenAI for Government — piloto CDAO até $200M (jun. 2025)",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "d1a25ec4",
+            "source_id": "ac9eda64",
+            "target_id": "525dd4dc",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "OTA DoD $200M — Claude Gov (jul. 2025)",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "4fb830c5",
+            "source_id": "6b2a54e1",
+            "target_id": "525dd4dc",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "Gemini for Gov — inaugural GenAI.mil (dez. 2025)",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "4a1330f9",
+            "source_id": "efee7132",
+            "target_id": "e9830c41",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "Grok integrado IL-5 / GenAI.mil (início 2026)",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "306b75ce",
+            "source_id": "c3ba17fd",
+            "target_id": "595cc045",
+            "layer_id": "L_integracao",
+            "rel_type": "integração",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "GPT via Palantir AIP / FedStart",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "950d1e57",
+            "source_id": "c3ba17fd",
+            "target_id": "ac9eda64",
+            "layer_id": "L_integracao",
+            "rel_type": "integração",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Claude Gov via Palantir FedStart — parceria tripartite Anthropic-Palantir-AWS (nov. 2024)",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "5c5414d3",
+            "source_id": "c3ba17fd",
+            "target_id": "6b2a54e1",
+            "layer_id": "L_integracao",
+            "rel_type": "integração",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Gemini via Palantir AIP",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "e7c0b110",
+            "source_id": "5b394531",
+            "target_id": "e9830c41",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "nuvem classificada IL-5/IL-6 (JEDI/JWCC)",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "ac2862e1",
+            "source_id": "5b394531",
+            "target_id": "c3ba17fd",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "infraestrutura acreditada Maven/FedStart",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "34825454",
+            "source_id": "525dd4dc",
+            "target_id": "e9830c41",
+            "layer_id": "L_regulacao",
+            "rel_type": "regulação",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "Task Force Lima — governança GenAI/LLM DoD (ago. 2023)",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "393b7dff",
+            "source_id": "d587e01d",
+            "target_id": "595cc045",
+            "layer_id": "L_cooperacao",
+            "rel_type": "cooperação",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "parceria contra-UAS — drones autônomos (dez. 2024)",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "8d36c0c6",
+            "source_id": "33dc474c",
+            "target_id": "e9830c41",
+            "layer_id": "L_cooperacao",
+            "rel_type": "cooperação",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "parceiro militar — Epic Fury iminente",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "4c1ad55b",
+            "source_id": "bdcecd98",
+            "target_id": "5b394531",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "GPUs H100 para cloud IL-6",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "9ed27c5a",
+            "source_id": "bdcecd98",
+            "target_id": "6c9c285b",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "GPUs H100 — Azure Gov",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "72c89378",
+            "source_id": "bdcecd98",
+            "target_id": "0bb09093",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "GPUs A100",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "52bae0b1",
+            "source_id": "a899bf70",
+            "target_id": "bdcecd98",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "fabricação chips 5nm/3nm",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "82716215",
+            "source_id": "5b394531",
+            "target_id": "6c9c285b",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "cloud governamental IL-6",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "3f2dbdf0",
+            "source_id": "5b394531",
+            "target_id": "0bb09093",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "cloud governamental",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "b6b3c37d",
+            "source_id": "597ccaa2",
+            "target_id": "a899bf70",
+            "layer_id": "L_regulacao",
+            "rel_type": "regulação",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "export controls Taiwan — CHIPS Act",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "dfdcfd7c",
+            "source_id": "597ccaa2",
+            "target_id": "bdcecd98",
+            "layer_id": "L_regulacao",
+            "rel_type": "regulação",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "AI Diffusion Framework — H100 export control",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "9d5105eb",
+            "source_id": "9bff2576",
+            "target_id": "5b394531",
+            "layer_id": "L_investimento",
+            "rel_type": "investimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "superclusters — Saudi/UAE/Qatar",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "60c684e0",
+            "source_id": "9bff2576",
+            "target_id": "0bb09093",
+            "layer_id": "L_investimento",
+            "rel_type": "investimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "data centers Golfo",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "ac818189",
+            "source_id": "e9830c41",
+            "target_id": "5b394531",
+            "layer_id": "L_dependencia",
+            "rel_type": "dependência",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "cloud soberana — JEDI/JWCC",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "30f393a8",
+            "source_id": "e9830c41",
+            "target_id": "6c9c285b",
+            "layer_id": "L_dependencia",
+            "rel_type": "dependência",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "Azure Gov — JWCC",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "c1b281ce",
+            "source_id": "f3d14097",
+            "target_id": "ceaeb168",
+            "layer_id": "L_investimento",
+            "rel_type": "investimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "Huawei/ZTE infraestrutura digital + vigilância Irã (centenas de milhões)",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "c5efc412",
+            "source_id": "f3d14097",
+            "target_id": "a899bf70",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "SMIC vs. TSMC — corrida semicondutores",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "a575960f",
+            "source_id": "ceaeb168",
+            "target_id": "5b394531",
+            "layer_id": "L_conflito",
+            "rel_type": "conflito",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "ciberataques PLC/HMI — IRGC (nov. 2023–jan. 2024, CISA/FBI advisory)",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "5957af6e",
+            "source_id": "6b2a54e1",
+            "target_id": "0bb09093",
+            "layer_id": "L_dependencia",
+            "rel_type": "dependência",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "compute TPU para treino Gemini — integração vertical Google",
+            "attributes": {
+              "estrato": "inter"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "014376f1",
+            "source_id": "c3ba17fd",
+            "target_id": "5b394531",
+            "layer_id": "L_dependencia",
+            "rel_type": "dependência",
+            "direction": "directed",
+            "weight": 1,
+            "label": "",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "5bfc6ad1",
+            "source_id": "c3ba17fd",
+            "target_id": "bdcecd98",
+            "layer_id": "L_dependencia",
+            "rel_type": "dependência",
+            "direction": "directed",
+            "weight": 1,
+            "label": "",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "c9b8407e",
+            "source_id": "efee7132",
+            "target_id": "6c618f59",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "directed",
+            "weight": 1,
+            "label": "",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          }
+        ],
+        "settings": {}
+      }
+    },
+    {
+      "name": "Pós-conflito (mar/2026)",
+      "data": {
+        "name": "Ecossistema IA — Guerra EUA–Irã (9 camadas)",
+        "description": "Modelagem multiplex (uma camada por tipo de relação) convertida de figura1/figura2.",
+        "layers": [
+          {
+            "id": "L_fornecimento",
+            "name": "Fornecimento",
+            "color": "#E74C3C",
+            "order": 0,
+            "visible": true
+          },
+          {
+            "id": "L_investimento",
+            "name": "Investimento",
+            "color": "#E74C3C",
+            "order": 1,
+            "visible": true
+          },
+          {
+            "id": "L_extracao",
+            "name": "Extração",
+            "color": "#E74C3C",
+            "order": 2,
+            "visible": true
+          },
+          {
+            "id": "L_regulacao",
+            "name": "Regulação",
+            "color": "#9B59B6",
+            "order": 3,
+            "visible": true
+          },
+          {
+            "id": "L_dependencia",
+            "name": "Dependência",
+            "color": "#27AE60",
+            "order": 4,
+            "visible": true
+          },
+          {
+            "id": "L_conflito",
+            "name": "Conflito",
+            "color": "#C0392B",
+            "order": 5,
+            "visible": true
+          },
+          {
+            "id": "L_integracao",
+            "name": "Integração",
+            "color": "#27AE60",
+            "order": 6,
+            "visible": true
+          },
+          {
+            "id": "L_cooperacao",
+            "name": "Cooperação",
+            "color": "#16A085",
+            "order": 7,
+            "visible": true
+          },
+          {
+            "id": "L_competicao",
+            "name": "Competição",
+            "color": "#3498DB",
+            "order": 8,
+            "visible": true
+          }
+        ],
+        "actors": {
+          "8b3ecd14": {
+            "id": "8b3ecd14",
+            "name": "Anthropic",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_competicao",
+              "L_conflito",
+              "L_cooperacao",
+              "L_dependencia"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_competicao": [
+                433.8,
+                380.6
+              ],
+              "L_conflito": [
+                433.8,
+                380.6
+              ],
+              "L_cooperacao": [
+                433.8,
+                380.6
+              ],
+              "L_dependencia": [
+                433.8,
+                380.6
+              ]
+            }
+          },
+          "aba9d7e1": {
+            "id": "aba9d7e1",
+            "name": "OpenAI",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_competicao",
+              "L_cooperacao",
+              "L_fornecimento",
+              "L_integracao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_competicao": [
+                505.0,
+                351.4
+              ],
+              "L_cooperacao": [
+                505.0,
+                351.4
+              ],
+              "L_fornecimento": [
+                505.0,
+                351.4
+              ],
+              "L_integracao": [
+                505.0,
+                351.4
+              ]
+            }
+          },
+          "73608a07": {
+            "id": "73608a07",
+            "name": "Google DeepMind",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_competicao",
+              "L_dependencia",
+              "L_fornecimento",
+              "L_integracao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_competicao": [
+                448.8,
+                340.6
+              ],
+              "L_dependencia": [
+                448.8,
+                340.6
+              ],
+              "L_fornecimento": [
+                448.8,
+                340.6
+              ],
+              "L_integracao": [
+                448.8,
+                340.6
+              ]
+            }
+          },
+          "63a115cf": {
+            "id": "63a115cf",
+            "name": "xAI",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_competicao",
+              "L_fornecimento",
+              "L_integracao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_competicao": [
+                358.3,
+                348.9
+              ],
+              "L_fornecimento": [
+                358.3,
+                348.9
+              ],
+              "L_integracao": [
+                358.3,
+                348.9
+              ]
+            }
+          },
+          "7ac7acc8": {
+            "id": "7ac7acc8",
+            "name": "Meta AI",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_competicao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_competicao": [
+                281.0,
+                402.3
+              ]
+            }
+          },
+          "9f641329": {
+            "id": "9f641329",
+            "name": "Palantir",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_cooperacao",
+              "L_dependencia",
+              "L_fornecimento",
+              "L_integracao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_cooperacao": [
+                494.7,
+                308.7
+              ],
+              "L_dependencia": [
+                494.7,
+                308.7
+              ],
+              "L_fornecimento": [
+                494.7,
+                308.7
+              ],
+              "L_integracao": [
+                494.7,
+                308.7
+              ]
+            }
+          },
+          "f1c8ca56": {
+            "id": "f1c8ca56",
+            "name": "Anduril",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_cooperacao",
+              "L_fornecimento"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_cooperacao": [
+                588.3,
+                344.1
+              ],
+              "L_fornecimento": [
+                588.3,
+                344.1
+              ]
+            }
+          },
+          "13af87a1": {
+            "id": "13af87a1",
+            "name": "Pentágono / DoD",
+            "actor_type": "Governo",
+            "color": "",
+            "layers": [
+              "L_conflito",
+              "L_cooperacao",
+              "L_dependencia",
+              "L_fornecimento",
+              "L_investimento",
+              "L_regulacao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_conflito": [
+                474.2,
+                313.9
+              ],
+              "L_cooperacao": [
+                474.2,
+                313.9
+              ],
+              "L_dependencia": [
+                474.2,
+                313.9
+              ],
+              "L_fornecimento": [
+                474.2,
+                313.9
+              ],
+              "L_investimento": [
+                474.2,
+                313.9
+              ],
+              "L_regulacao": [
+                474.2,
+                313.9
+              ]
+            }
+          },
+          "e3e8f307": {
+            "id": "e3e8f307",
+            "name": "CDAO",
+            "actor_type": "Governo",
+            "color": "",
+            "layers": [
+              "L_regulacao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_regulacao": [
+                428.3,
+                403.0
+              ]
+            }
+          },
+          "45452f7f": {
+            "id": "45452f7f",
+            "name": "AWS Gov",
+            "actor_type": "Plataforma",
+            "color": "",
+            "layers": [
+              "L_conflito",
+              "L_dependencia",
+              "L_fornecimento"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_conflito": [
+                552.7,
+                242.7
+              ],
+              "L_dependencia": [
+                552.7,
+                242.7
+              ],
+              "L_fornecimento": [
+                552.7,
+                242.7
+              ]
+            }
+          },
+          "be1e3b2b": {
+            "id": "be1e3b2b",
+            "name": "NSA",
+            "actor_type": "Governo",
+            "color": "",
+            "layers": [
+              "L_dependencia"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_dependencia": [
+                250.6,
+                615.0
+              ]
+            }
+          },
+          "0a10f579": {
+            "id": "0a10f579",
+            "name": "Tribunal Federal",
+            "actor_type": "Regulador",
+            "color": "",
+            "layers": [
+              "L_regulacao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_regulacao": [
+                45.0,
+                211.2
+              ]
+            }
+          },
+          "4c333204": {
+            "id": "4c333204",
+            "name": "Casa Branca",
+            "actor_type": "Governo",
+            "color": "",
+            "layers": [
+              "L_cooperacao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_cooperacao": [
+                76.3,
+                562.9
+              ]
+            }
+          },
+          "309094be": {
+            "id": "309094be",
+            "name": "Israel / IAF",
+            "actor_type": "Governo",
+            "color": "",
+            "layers": [
+              "L_cooperacao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_cooperacao": [
+                254.3,
+                213.1
+              ]
+            }
+          },
+          "4b85aab0": {
+            "id": "4b85aab0",
+            "name": "CISA",
+            "actor_type": "Regulador",
+            "color": "",
+            "layers": [
+              "L_cooperacao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_cooperacao": [
+                489.9,
+                514.5
+              ]
+            }
+          },
+          "8668fd19": {
+            "id": "8668fd19",
+            "name": "Nvidia",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_competicao",
+              "L_dependencia",
+              "L_fornecimento",
+              "L_regulacao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_competicao": [
+                667.4,
+                221.0
+              ],
+              "L_dependencia": [
+                667.4,
+                221.0
+              ],
+              "L_fornecimento": [
+                667.4,
+                221.0
+              ],
+              "L_regulacao": [
+                667.4,
+                221.0
+              ]
+            }
+          },
+          "b449692e": {
+            "id": "b449692e",
+            "name": "Microsoft/Azure",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_dependencia",
+              "L_fornecimento"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_dependencia": [
+                534.8,
+                148.1
+              ],
+              "L_fornecimento": [
+                534.8,
+                148.1
+              ]
+            }
+          },
+          "7af5ac2d": {
+            "id": "7af5ac2d",
+            "name": "Google Cloud",
+            "actor_type": "Plataforma",
+            "color": "",
+            "layers": [
+              "L_conflito",
+              "L_dependencia",
+              "L_fornecimento"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_conflito": [
+                588.8,
+                255.9
+              ],
+              "L_dependencia": [
+                588.8,
+                255.9
+              ],
+              "L_fornecimento": [
+                588.8,
+                255.9
+              ]
+            }
+          },
+          "b754baa7": {
+            "id": "b754baa7",
+            "name": "Governo EUA",
+            "actor_type": "Regulador",
+            "color": "",
+            "layers": [
+              "L_regulacao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_regulacao": [
+                947.8,
+                63.1
+              ]
+            }
+          },
+          "e58231d4": {
+            "id": "e58231d4",
+            "name": "Países do Golfo",
+            "actor_type": "Governo",
+            "color": "",
+            "layers": [
+              "L_dependencia",
+              "L_investimento"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_dependencia": [
+                434.3,
+                178.4
+              ],
+              "L_investimento": [
+                434.3,
+                178.4
+              ]
+            }
+          },
+          "1eebdd34": {
+            "id": "1eebdd34",
+            "name": "TSMC",
+            "actor_type": "Empresa",
+            "color": "",
+            "layers": [
+              "L_competicao",
+              "L_conflito",
+              "L_fornecimento",
+              "L_regulacao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_competicao": [
+                877.9,
+                169.3
+              ],
+              "L_conflito": [
+                877.9,
+                169.3
+              ],
+              "L_fornecimento": [
+                877.9,
+                169.3
+              ],
+              "L_regulacao": [
+                877.9,
+                169.3
+              ]
+            }
+          },
+          "e61cc9b1": {
+            "id": "e61cc9b1",
+            "name": "Irã / IRGC",
+            "actor_type": "Governo",
+            "color": "",
+            "layers": [
+              "L_conflito",
+              "L_extracao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_conflito": [
+                716.9,
+                267.5
+              ],
+              "L_extracao": [
+                716.9,
+                267.5
+              ]
+            }
+          },
+          "cd7d787f": {
+            "id": "cd7d787f",
+            "name": "China / Huawei",
+            "actor_type": "Governo",
+            "color": "",
+            "layers": [
+              "L_competicao",
+              "L_extracao"
+            ],
+            "attributes": {},
+            "positions": {
+              "L_competicao": [
+                934.5,
+                209.6
+              ],
+              "L_extracao": [
+                934.5,
+                209.6
+              ]
+            }
+          }
+        },
+        "relationships": [
+          {
+            "id": "b50cdd3c",
+            "source_id": "aba9d7e1",
+            "target_id": "8b3ecd14",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "GPT vs. Claude — competição na fronteira LLM",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "cd001531",
+            "source_id": "aba9d7e1",
+            "target_id": "73608a07",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "GPT vs. Gemini — fronteira LLM",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "6308c09e",
+            "source_id": "8b3ecd14",
+            "target_id": "73608a07",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Claude vs. Gemini",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "3f14b8a1",
+            "source_id": "63a115cf",
+            "target_id": "aba9d7e1",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Grok vs. GPT",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "f606617d",
+            "source_id": "63a115cf",
+            "target_id": "8b3ecd14",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Grok vs. Claude",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "6db78ff4",
+            "source_id": "63a115cf",
+            "target_id": "73608a07",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Grok vs. Gemini",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "b804db81",
+            "source_id": "7ac7acc8",
+            "target_id": "aba9d7e1",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Llama open-source vs. GPT",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "67c2b7af",
+            "source_id": "7ac7acc8",
+            "target_id": "8b3ecd14",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Llama open-source vs. Claude",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "ff16a6bc",
+            "source_id": "7ac7acc8",
+            "target_id": "73608a07",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Llama open-source vs. Gemini",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "0a3adbdf",
+            "source_id": "13af87a1",
+            "target_id": "8b3ecd14",
+            "layer_id": "L_conflito",
+            "rel_type": "conflito",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "supply chain risk §3252 — blacklisting + memo Kirsten Davies (6 mar.)",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "6107a0b4",
+            "source_id": "9f641329",
+            "target_id": "13af87a1",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "Maven — Program of Record (mar. 2026) — middleware insubstituível",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "9991054f",
+            "source_id": "9f641329",
+            "target_id": "309094be",
+            "layer_id": "L_cooperacao",
+            "rel_type": "cooperação",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "parceria formal MoD Israel — targeting Epic Fury",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "07b0dffa",
+            "source_id": "f1c8ca56",
+            "target_id": "13af87a1",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "Lattice / contra-UAS ($20bi contrato)",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "d3671d11",
+            "source_id": "9f641329",
+            "target_id": "f1c8ca56",
+            "layer_id": "L_cooperacao",
+            "rel_type": "cooperação",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "integradores militares consolidados",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "f7f8917f",
+            "source_id": "aba9d7e1",
+            "target_id": "13af87a1",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "acordo classificado + guardrails + pessoal OpenAI in-loop (mar. 2026)",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "d79a845b",
+            "source_id": "73608a07",
+            "target_id": "13af87a1",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "Gemini for Gov / TPUs em ambientes superclassificados",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "7832fa36",
+            "source_id": "63a115cf",
+            "target_id": "13af87a1",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "Grok IL-5 / GenAI.mil — 1.2M usuários em 2 meses",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "a39d7a16",
+            "source_id": "9f641329",
+            "target_id": "aba9d7e1",
+            "layer_id": "L_integracao",
+            "rel_type": "integração",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "GPT via Maven AIP",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "a8373aad",
+            "source_id": "9f641329",
+            "target_id": "73608a07",
+            "layer_id": "L_integracao",
+            "rel_type": "integração",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Gemini via Maven AIP",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "ea6c0bef",
+            "source_id": "9f641329",
+            "target_id": "63a115cf",
+            "layer_id": "L_integracao",
+            "rel_type": "integração",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Grok via Maven AIP",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "321779be",
+            "source_id": "f1c8ca56",
+            "target_id": "aba9d7e1",
+            "layer_id": "L_cooperacao",
+            "rel_type": "cooperação",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "OpenAI+Anduril: drones contra-UAS — ameaças letais em tempo real",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "365a415b",
+            "source_id": "45452f7f",
+            "target_id": "13af87a1",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "cloud IL-5/IL-6 — actante militar declarado após ataques iranianos",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "a1616ffd",
+            "source_id": "be1e3b2b",
+            "target_id": "8b3ecd14",
+            "layer_id": "L_dependencia",
+            "rel_type": "dependência",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "Mythos Preview — cyberops contínuos apesar do blacklisting (Axios)",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "348ce11c",
+            "source_id": "0a10f579",
+            "target_id": "13af87a1",
+            "layer_id": "L_regulacao",
+            "rel_type": "regulação",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "liminar Lin J. (24–26 mar.) → revertida DC Circuit (8 abr.) — deferência executivo",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "8bdf79a7",
+            "source_id": "4c333204",
+            "target_id": "8b3ecd14",
+            "layer_id": "L_cooperacao",
+            "rel_type": "cooperação",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "mediação Wiles+Bessent+Amodei (17 abr. 2026) — compromisso parcial",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "cd9cc2c2",
+            "source_id": "e3e8f307",
+            "target_id": "13af87a1",
+            "layer_id": "L_regulacao",
+            "rel_type": "regulação",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "RAI Principles 2021 → AI-first 2026: velocidade > alignment perfeita",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "1531eef1",
+            "source_id": "309094be",
+            "target_id": "13af87a1",
+            "layer_id": "L_cooperacao",
+            "rel_type": "cooperação",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "co-executor Epic Fury — IAF + CENTCOM",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "6464b0d4",
+            "source_id": "4b85aab0",
+            "target_id": "8b3ecd14",
+            "layer_id": "L_cooperacao",
+            "rel_type": "cooperação",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "Project Glasswing — Mythos para defesa infraestrutura crítica",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "8da0fd38",
+            "source_id": "4b85aab0",
+            "target_id": "aba9d7e1",
+            "layer_id": "L_cooperacao",
+            "rel_type": "cooperação",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "Trusted Access for Cyber (TAC) — defensores verificados (abr. 2026)",
+            "attributes": {
+              "estrato": "deployments"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "2d54e908",
+            "source_id": "8668fd19",
+            "target_id": "45452f7f",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "GPUs H100 — nós militares",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "eeb5c772",
+            "source_id": "8668fd19",
+            "target_id": "b449692e",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "GPUs H100 — Azure Gov",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "8f871408",
+            "source_id": "8668fd19",
+            "target_id": "7af5ac2d",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "GPUs A100",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "b3997919",
+            "source_id": "1eebdd34",
+            "target_id": "8668fd19",
+            "layer_id": "L_fornecimento",
+            "rel_type": "fornecimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "chips 5nm/3nm — rota via Ormuz interrompida",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "cba39a45",
+            "source_id": "e61cc9b1",
+            "target_id": "45452f7f",
+            "layer_id": "L_conflito",
+            "rel_type": "conflito",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "drones suicidas IRGC → data centers AWS Bahrein/UAE (2 mar. 2026)",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "e4f66ffe",
+            "source_id": "e61cc9b1",
+            "target_id": "7af5ac2d",
+            "layer_id": "L_conflito",
+            "rel_type": "conflito",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "infraestrutura Big Tech = 'alvo estratégico do inimigo' (propaganda iraniana)",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "e9522952",
+            "source_id": "e61cc9b1",
+            "target_id": "1eebdd34",
+            "layer_id": "L_conflito",
+            "rel_type": "conflito",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "fechamento Ormuz → escassez bromo, He, H2SO4 → paralisação TSMC",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "ae74a9a4",
+            "source_id": "13af87a1",
+            "target_id": "e58231d4",
+            "layer_id": "L_investimento",
+            "rel_type": "investimento",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "vendas armas $16bi — lock-in geopolítico segurança",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "06d8f340",
+            "source_id": "e58231d4",
+            "target_id": "45452f7f",
+            "layer_id": "L_dependencia",
+            "rel_type": "dependência",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "superclusters → ímãs de risco bélico — lock-in militar/tecnológico",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "8247bd05",
+            "source_id": "b754baa7",
+            "target_id": "8668fd19",
+            "layer_id": "L_regulacao",
+            "rel_type": "regulação",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "AI Diffusion Framework — export control H100",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "39418d3d",
+            "source_id": "b754baa7",
+            "target_id": "1eebdd34",
+            "layer_id": "L_regulacao",
+            "rel_type": "regulação",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "export controls Taiwan + CASR satelital",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "7d8d871b",
+            "source_id": "13af87a1",
+            "target_id": "45452f7f",
+            "layer_id": "L_dependencia",
+            "rel_type": "dependência",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "cloud soberana = infraestrutura crítica declarada",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "23ca654f",
+            "source_id": "13af87a1",
+            "target_id": "b449692e",
+            "layer_id": "L_dependencia",
+            "rel_type": "dependência",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "Azure Gov — JWCC",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "33b4a2fe",
+            "source_id": "cd7d787f",
+            "target_id": "e61cc9b1",
+            "layer_id": "L_extracao",
+            "rel_type": "extração",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "infraestrutura Huawei/ZTE destruída por CENTCOM — perda estratégica bilionária",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "9290a780",
+            "source_id": "cd7d787f",
+            "target_id": "1eebdd34",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "SMIC vs. TSMC — export controls ocidentais aceleram corrida",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "538b1380",
+            "source_id": "cd7d787f",
+            "target_id": "8668fd19",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "bidirectional",
+            "weight": 1.0,
+            "label": "Huawei Ascend vs. H100 — export controls favorecem desenvolvimento doméstico",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "1f606b37",
+            "source_id": "73608a07",
+            "target_id": "7af5ac2d",
+            "layer_id": "L_dependencia",
+            "rel_type": "dependência",
+            "direction": "source_to_target",
+            "weight": 1.0,
+            "label": "Gemini compute via TPUs — integração vertical Google",
+            "attributes": {
+              "estrato": "inter"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "7192a99c",
+            "source_id": "9f641329",
+            "target_id": "45452f7f",
+            "layer_id": "L_dependencia",
+            "rel_type": "dependência",
+            "direction": "directed",
+            "weight": 1,
+            "label": "",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "a54615d7",
+            "source_id": "9f641329",
+            "target_id": "8668fd19",
+            "layer_id": "L_dependencia",
+            "rel_type": "dependência",
+            "direction": "directed",
+            "weight": 1,
+            "label": "",
+            "attributes": {
+              "estrato": "infra"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          },
+          {
+            "id": "d71caf68",
+            "source_id": "63a115cf",
+            "target_id": "7ac7acc8",
+            "layer_id": "L_competicao",
+            "rel_type": "competição",
+            "direction": "directed",
+            "weight": 1,
+            "label": "",
+            "attributes": {
+              "estrato": "modelos"
+            },
+            "source_layer_id": "",
+            "target_layer_id": ""
+          }
+        ],
+        "settings": {}
+      }
+    }
+  ]
+}

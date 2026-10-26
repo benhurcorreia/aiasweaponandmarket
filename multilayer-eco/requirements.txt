@@ -1,0 +1,15 @@
+PySide6>=6.5.0
+networkx>=3.1
+anthropic>=0.30.0
+openai>=1.30.0
+PyMuPDF>=1.24.0
+python-docx>=1.1.0
+Pillow>=10.0.0
+numpy>=1.24.0
+
+# Opcional — Gemini API
+# google-generativeai>=0.8.0
+
+# Opcional — SLM local via Ollama (sem pacote extra, usa urllib nativo)
+# Instale o Ollama: https://ollama.com
+# Depois: ollama pull gemma3

@@ -1,0 +1,1218 @@
+"""
+MultilayerEco - Main Window
+Janela principal do aplicativo.
+"""
+import os
+from PySide6.QtWidgets import (
+    QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
+    QSplitter, QMenuBar, QMenu, QToolBar, QStatusBar,
+    QTreeWidget, QTreeWidgetItem, QListWidget, QListWidgetItem,
+    QPushButton, QLabel, QGroupBox, QMessageBox,
+    QFileDialog, QApplication, QDockWidget, QFrame,
+    QSizePolicy, QComboBox, QSpinBox,
+    QInputDialog, QDialog, QDialogButtonBox
+)
+from PySide6.QtCore import Qt, QSize
+from PySide6.QtGui import QFont, QColor, QIcon, QKeySequence, QAction
+
+from core.models import (
+    Project, Actor, Layer, Relationship,
+    ACTOR_TYPE_COLORS, RELATION_TYPE_STYLES
+)
+from core.graph_engine import GraphEngine
+from ui.canvas import MultilayerScene, MultilayerView
+from ui.comparison import ComparisonWindow
+from ui.dialogs.dialogs import (
+    AddLayerDialog, AddActorDialog, AddRelationDialog,
+    ExtractionDialog, SettingsDialog, ActorTypeManagerDialog
+)
+from export.exporters import (
+    export_json, export_actors_csv,
+    export_relationships_csv, export_metrics_csv
+)
+
+
+class MainWindow(QMainWindow):
+    """Main application window."""
+
+    def __init__(self):
+        super().__init__()
+        self.project = Project(name="Novo Projeto")
+        self.settings = {
+            "api_key": os.environ.get("ANTHROPIC_API_KEY", ""),
+            "openai_api_key": os.environ.get("OPENAI_API_KEY", ""),
+            "gemini_api_key": os.environ.get("GOOGLE_API_KEY", ""),
+            "layout_algorithm": "spring",
+            "isometric": True,
+        }
+        self._custom_actor_types = []   # user-defined actor types
+        self._current_file = None
+
+        self.setWindowTitle("MultilayerEco — Ecossistemas de Negócios Multinível")
+        self.setMinimumSize(1200, 800)
+
+        self._setup_ui()
+        self._setup_menus()
+        self._setup_toolbar()
+        self._setup_statusbar()
+
+        # Apply stylesheet
+        self._apply_style()
+
+    def _setup_ui(self):
+        """Setup the main UI layout."""
+        central = QWidget()
+        self.setCentralWidget(central)
+        main_layout = QHBoxLayout(central)
+        main_layout.setContentsMargins(0, 0, 0, 0)
+
+        splitter = QSplitter(Qt.Horizontal)
+        main_layout.addWidget(splitter)
+
+        # ─── LEFT PANEL ───
+        left_panel = QWidget()
+        left_layout = QVBoxLayout(left_panel)
+        left_layout.setContentsMargins(8, 8, 8, 8)
+        left_panel.setMaximumWidth(280)
+        left_panel.setMinimumWidth(220)
+
+        # Layers section
+        layers_group = QGroupBox("Camadas")
+        layers_layout = QVBoxLayout(layers_group)
+        self.layers_list = QListWidget()
+        self.layers_list.setMaximumHeight(150)
+        self.layers_list.itemClicked.connect(self._on_layer_selected)
+        layers_layout.addWidget(self.layers_list)
+
+        layers_btn_layout = QHBoxLayout()
+        add_layer_btn = QPushButton("+")
+        add_layer_btn.setToolTip("Adicionar Camada")
+        add_layer_btn.setFixedSize(32, 32)
+        add_layer_btn.clicked.connect(self._add_layer)
+        del_layer_btn = QPushButton("−")
+        del_layer_btn.setToolTip("Remover Camada")
+        del_layer_btn.setFixedSize(32, 32)
+        del_layer_btn.clicked.connect(self._remove_layer)
+        up_layer_btn = QPushButton("↑")
+        up_layer_btn.setToolTip("Mover camada para cima")
+        up_layer_btn.setFixedSize(32, 32)
+        up_layer_btn.clicked.connect(self._move_layer_up)
+        dn_layer_btn = QPushButton("↓")
+        dn_layer_btn.setToolTip("Mover camada para baixo")
+        dn_layer_btn.setFixedSize(32, 32)
+        dn_layer_btn.clicked.connect(self._move_layer_down)
+        layers_btn_layout.addWidget(add_layer_btn)
+        layers_btn_layout.addWidget(del_layer_btn)
+        layers_btn_layout.addWidget(up_layer_btn)
+        layers_btn_layout.addWidget(dn_layer_btn)
+        layers_btn_layout.addStretch()
+        layers_layout.addLayout(layers_btn_layout)
+        left_layout.addWidget(layers_group)
+
+        # Actors section
+        actors_group = QGroupBox("Atores")
+        actors_layout = QVBoxLayout(actors_group)
+        self.actors_list = QListWidget()
+        self.actors_list.itemClicked.connect(self._on_actor_selected)
+        self.actors_list.itemDoubleClicked.connect(self._edit_actor)
+        actors_layout.addWidget(self.actors_list)
+
+        actors_btn_layout = QHBoxLayout()
+        add_actor_btn = QPushButton("+")
+        add_actor_btn.setToolTip("Adicionar Ator")
+        add_actor_btn.setFixedSize(32, 32)
+        add_actor_btn.clicked.connect(self._add_actor)
+        del_actor_btn = QPushButton("−")
+        del_actor_btn.setToolTip("Remover Ator")
+        del_actor_btn.setFixedSize(32, 32)
+        del_actor_btn.clicked.connect(self._remove_actor)
+        edit_actor_btn = QPushButton("✎")
+        edit_actor_btn.setToolTip("Editar Ator")
+        edit_actor_btn.setFixedSize(32, 32)
+        edit_actor_btn.clicked.connect(self._edit_actor)
+        actors_btn_layout.addWidget(add_actor_btn)
+        actors_btn_layout.addWidget(edit_actor_btn)
+        actors_btn_layout.addWidget(del_actor_btn)
+        actors_btn_layout.addStretch()
+        actors_layout.addLayout(actors_btn_layout)
+        left_layout.addWidget(actors_group)
+
+        # Relations section
+        relations_group = QGroupBox("Relações")
+        relations_layout = QVBoxLayout(relations_group)
+        self.relations_list = QListWidget()
+        self.relations_list.setMaximumHeight(200)
+        self.relations_list.itemDoubleClicked.connect(self._edit_relation)
+        relations_layout.addWidget(self.relations_list)
+
+        rel_btn_layout = QHBoxLayout()
+        add_rel_btn = QPushButton("+")
+        add_rel_btn.setToolTip("Adicionar Relação")
+        add_rel_btn.setFixedSize(32, 32)
+        add_rel_btn.clicked.connect(self._add_relation)
+        del_rel_btn = QPushButton("−")
+        del_rel_btn.setToolTip("Remover Relação")
+        del_rel_btn.setFixedSize(32, 32)
+        del_rel_btn.clicked.connect(self._remove_relation)
+        rel_btn_layout.addWidget(add_rel_btn)
+        rel_btn_layout.addWidget(del_rel_btn)
+        rel_btn_layout.addStretch()
+        relations_layout.addLayout(rel_btn_layout)
+        left_layout.addWidget(relations_group)
+
+        left_layout.addStretch()
+        splitter.addWidget(left_panel)
+
+        # ─── CENTER: CANVAS + ZOOM BAR ───
+        canvas_container = QWidget()
+        canvas_container.setObjectName("canvasContainer")
+        canvas_layout = QVBoxLayout(canvas_container)
+        canvas_layout.setContentsMargins(0, 0, 0, 0)
+        canvas_layout.setSpacing(0)
+
+        self.scene = MultilayerScene()
+        self.view = MultilayerView(self.scene)
+        canvas_layout.addWidget(self.view)
+
+        # Zoom control bar (below canvas)
+        zoom_bar = QWidget()
+        zoom_bar.setObjectName("zoomBar")
+        zoom_bar.setFixedHeight(36)
+        zoom_bar.setStyleSheet(
+            "QWidget#zoomBar { background-color: #181825; border-top: 1px solid #313244; }"
+        )
+        zoom_bar_layout = QHBoxLayout(zoom_bar)
+        zoom_bar_layout.setContentsMargins(10, 0, 10, 0)
+        zoom_bar_layout.setSpacing(6)
+
+        zoom_out_btn = QPushButton("−")
+        zoom_out_btn.setFixedSize(28, 24)
+        zoom_out_btn.setToolTip("Diminuir zoom")
+        zoom_out_btn.clicked.connect(lambda: self.view.zoom_step(-1))
+
+        zoom_in_btn = QPushButton("+")
+        zoom_in_btn.setFixedSize(28, 24)
+        zoom_in_btn.setToolTip("Aumentar zoom")
+        zoom_in_btn.clicked.connect(lambda: self.view.zoom_step(+1))
+
+        from PySide6.QtWidgets import QSlider
+        self.zoom_slider = QSlider(Qt.Horizontal)
+        self.zoom_slider.setRange(-40, 40)
+        self.zoom_slider.setValue(0)
+        self.zoom_slider.setFixedWidth(120)
+        self.zoom_slider.setToolTip("Nível de zoom")
+        self.zoom_slider.valueChanged.connect(self._on_zoom_slider)
+
+        self.zoom_label = QLabel("100%")
+        self.zoom_label.setFixedWidth(44)
+        self.zoom_label.setStyleSheet("color: #A6ADC8; font-size: 11px;")
+
+        fit_zoom_btn = QPushButton("⊡ Fit")
+        fit_zoom_btn.setFixedHeight(24)
+        fit_zoom_btn.setToolTip("Ajustar toda a cena na janela")
+        fit_zoom_btn.clicked.connect(self._fit_all)
+
+        pan_hint = QLabel("Scroll: zoom  |  Meio/Espaço: mover")
+        pan_hint.setStyleSheet("color: #585B70; font-size: 10px;")
+
+        zoom_bar_layout.addWidget(zoom_out_btn)
+        zoom_bar_layout.addWidget(self.zoom_slider)
+        zoom_bar_layout.addWidget(zoom_in_btn)
+        zoom_bar_layout.addWidget(self.zoom_label)
+        zoom_bar_layout.addSpacing(10)
+        zoom_bar_layout.addWidget(fit_zoom_btn)
+        zoom_bar_layout.addSpacing(12)
+
+        # ─── Botão modo Mover ───
+        self.pan_btn = QPushButton("✋ Mover")
+        self.pan_btn.setCheckable(True)
+        self.pan_btn.setFixedHeight(24)
+        self.pan_btn.setToolTip(
+            "Modo Mover: clique+arraste para navegar no mapa\n"
+            "Atalho: segure Espaço para mover temporariamente"
+        )
+        self.pan_btn.setStyleSheet(
+            "QPushButton { background-color: #45475A; color: #CDD6F4; "
+            "border: 1px solid #585B70; border-radius: 4px; padding: 0 10px; font-weight: normal; }"
+            "QPushButton:checked { background-color: #89B4FA; color: #1E1E2E; border-color: #89B4FA; font-weight: bold; }"
+            "QPushButton:hover { background-color: #585B70; }"
+            "QPushButton:checked:hover { background-color: #74C7EC; }"
+        )
+        self.pan_btn.toggled.connect(self.view.toggle_pan_mode)
+        zoom_bar_layout.addWidget(self.pan_btn)
+        zoom_bar_layout.addSpacing(4)
+
+        spread_btn = QPushButton("⊞ Espalhar")
+        spread_btn.setFixedHeight(24)
+        spread_btn.setToolTip(
+            "Redistribui automaticamente os atores de cada camada\n"
+            "em grade, eliminando sobreposições"
+        )
+        spread_btn.setStyleSheet(
+            "QPushButton { background-color: #45475A; color: #CDD6F4; "
+            "border: 1px solid #585B70; border-radius: 4px; padding: 0 10px; font-weight: normal; }"
+            "QPushButton:hover { background-color: #585B70; }"
+            "QPushButton:pressed { background-color: #74C7EC; color: #1E1E2E; }"
+        )
+        spread_btn.clicked.connect(lambda: (
+            self.scene.spread_actors(),
+            self._fit_all()
+        ))
+        zoom_bar_layout.addWidget(spread_btn)
+        zoom_bar_layout.addSpacing(20)
+
+        # ─── Controle de tamanho da fonte dos nós ───
+        font_lbl = QLabel("Fonte nós:")
+        font_lbl.setStyleSheet("color: #A6ADC8; font-size: 11px;")
+        zoom_bar_layout.addWidget(font_lbl)
+
+        self.font_size_spin = QSpinBox()
+        self.font_size_spin.setRange(6, 24)
+        self.font_size_spin.setValue(11)
+        self.font_size_spin.setSuffix(" pt")
+        self.font_size_spin.setFixedWidth(64)
+        self.font_size_spin.setFixedHeight(24)
+        self.font_size_spin.setToolTip("Tamanho da fonte dos nomes dos atores (6–24 pt)")
+        self.font_size_spin.valueChanged.connect(
+            lambda v: self.scene.set_node_font_size(v)
+        )
+        zoom_bar_layout.addWidget(self.font_size_spin)
+
+        zoom_bar_layout.addStretch()
+        zoom_bar_layout.addWidget(pan_hint)
+
+        canvas_layout.addWidget(zoom_bar)
+        splitter.addWidget(canvas_container)
+
+        # ─── RIGHT PANEL ───
+        right_panel = QWidget()
+        right_layout = QVBoxLayout(right_panel)
+        right_layout.setContentsMargins(8, 8, 8, 8)
+        right_panel.setMaximumWidth(260)
+        right_panel.setMinimumWidth(200)
+
+        # Properties
+        props_group = QGroupBox("Propriedades")
+        props_layout = QVBoxLayout(props_group)
+        self.props_label = QLabel("Selecione um ator ou relação\npara ver propriedades.")
+        self.props_label.setWordWrap(True)
+        self.props_label.setStyleSheet("color: #A6ADC8; font-style: italic;")
+        props_layout.addWidget(self.props_label)
+        right_layout.addWidget(props_group)
+
+        # Metrics
+        metrics_group = QGroupBox("Métricas da Rede")
+        metrics_layout = QVBoxLayout(metrics_group)
+        self.metrics_label = QLabel("Adicione camadas e atores\npara ver métricas.")
+        self.metrics_label.setWordWrap(True)
+        self.metrics_label.setStyleSheet("color: #A6ADC8; font-size: 11px;")
+        metrics_layout.addWidget(self.metrics_label)
+        right_layout.addWidget(metrics_group)
+
+        # View / layer isolation controls
+        view_group = QGroupBox("Visualização")
+        view_v = QVBoxLayout(view_group)
+        iso_lbl = QLabel("Camada isolada (2D):")
+        iso_lbl.setStyleSheet("color:#A6ADC8; font-size:11px;")
+        view_v.addWidget(iso_lbl)
+        self.isolate_combo = QComboBox()
+        self.isolate_combo.setToolTip(
+            "Mostra apenas uma camada, de frente (2D plano).\n"
+            "Escolha 'Todas as camadas' para a visão completa em escada."
+        )
+        self.isolate_combo.currentIndexChanged.connect(self._on_isolate_changed)
+        view_v.addWidget(self.isolate_combo)
+        right_layout.addWidget(view_group)
+
+        # Layout controls
+        layout_group = QGroupBox("Layout")
+        layout_controls = QVBoxLayout(layout_group)
+
+        self.layout_combo = QComboBox()
+        for alg in ["spring", "circular", "spectral", "kamada_kawai", "shell"]:
+            self.layout_combo.addItem(alg)
+        layout_controls.addWidget(self.layout_combo)
+
+        relayout_btn = QPushButton("↻ Recalcular Layout")
+        relayout_btn.clicked.connect(self._recalculate_layout)
+        layout_controls.addWidget(relayout_btn)
+
+        right_layout.addWidget(layout_group)
+        right_layout.addStretch()
+
+        splitter.addWidget(right_panel)
+        splitter.setSizes([250, 700, 250])
+
+        # Connect view zoom → sync slider/label
+        self.view.zoom_changed.connect(self._sync_zoom_slider)
+
+    def _setup_menus(self):
+        """Setup menu bar."""
+        menubar = self.menuBar()
+
+        # File menu
+        file_menu = menubar.addMenu("Arquivo")
+
+        new_action = file_menu.addAction("Novo Projeto")
+        new_action.setShortcut(QKeySequence.New)
+        new_action.triggered.connect(self._new_project)
+
+        open_action = file_menu.addAction("Abrir Projeto...")
+        open_action.setShortcut(QKeySequence.Open)
+        open_action.triggered.connect(self._open_project)
+
+        save_action = file_menu.addAction("Salvar Projeto")
+        save_action.setShortcut(QKeySequence.Save)
+        save_action.triggered.connect(self._save_project)
+
+        save_as_action = file_menu.addAction("Salvar Como...")
+        save_as_action.setShortcut(QKeySequence("Ctrl+Shift+S"))
+        save_as_action.triggered.connect(self._save_project_as)
+
+        file_menu.addSeparator()
+        quit_action = file_menu.addAction("Sair")
+        quit_action.setShortcut(QKeySequence.Quit)
+        quit_action.triggered.connect(self.close)
+
+        # Edit menu
+        edit_menu = menubar.addMenu("Editar")
+        edit_menu.addAction("Adicionar Camada", self._add_layer)
+        edit_menu.addAction("Adicionar Ator", self._add_actor)
+        edit_menu.addAction("Adicionar Relação", self._add_relation)
+        edit_menu.addSeparator()
+        edit_menu.addAction("Gerenciar Tipos de Ator...", self._manage_actor_types)
+        edit_menu.addSeparator()
+        edit_menu.addAction("Configurações...", self._show_settings)
+
+        # Analysis menu
+        analysis_menu = menubar.addMenu("Análise")
+        analysis_menu.addAction("Extrair de Documento (LLM)...", self._run_extraction)
+        analysis_menu.addSeparator()
+        analysis_menu.addAction("Comparar Ecossistemas (Antes/Depois)...", self._open_comparison)
+        analysis_menu.addSeparator()
+        analysis_menu.addAction("Recalcular Layout", self._recalculate_layout)
+        analysis_menu.addAction("Calcular Métricas", self._update_metrics)
+
+        # Snapshots ("momentos") menu
+        snap_menu = menubar.addMenu("Momentos")
+        snap_menu.addAction("Salvar Momento Atual...", self._save_snapshot)
+        snap_menu.addAction("Gerenciar Momentos...", self._manage_snapshots)
+        snap_menu.addSeparator()
+        snap_menu.addAction("Comparar Momentos...", self._open_comparison)
+
+        # Export menu
+        export_menu = menubar.addMenu("Exportar")
+        export_menu.addAction("Exportar Imagem (PNG)...", self._export_png)
+        export_menu.addSeparator()
+        export_menu.addAction("Exportar Projeto (JSON)...", self._export_json)
+        export_menu.addAction("Exportar Atores (CSV)...", self._export_actors_csv)
+        export_menu.addAction("Exportar Relações (CSV)...", self._export_relations_csv)
+        export_menu.addAction("Exportar Métricas (CSV)...", self._export_metrics_csv)
+
+    def _setup_toolbar(self):
+        """Setup toolbar."""
+        toolbar = self.addToolBar("Principal")
+        toolbar.setIconSize(QSize(20, 20))
+        toolbar.setMovable(False)
+
+        toolbar.addAction("Novo", self._new_project)
+        toolbar.addAction("Abrir", self._open_project)
+        toolbar.addAction("Salvar", self._save_project)
+        toolbar.addSeparator()
+        toolbar.addAction("+ Camada", self._add_layer)
+        toolbar.addAction("+ Ator", self._add_actor)
+        toolbar.addAction("+ Relação", self._add_relation)
+        toolbar.addSeparator()
+        toolbar.addAction("LLM Extract", self._run_extraction)
+        toolbar.addSeparator()
+        toolbar.addAction("⇄ Comparar", self._open_comparison)
+        toolbar.addSeparator()
+        toolbar.addAction("PNG", self._export_png)
+        toolbar.addSeparator()
+        toolbar.addAction("Fit", lambda: self.view.fit_all())
+
+    def _setup_statusbar(self):
+        """Setup status bar."""
+        self.statusbar = QStatusBar()
+        self.setStatusBar(self.statusbar)
+        self._update_statusbar()
+
+    def _apply_style(self):
+        """Apply dark theme stylesheet."""
+        self.setStyleSheet("""
+            /* ── Global Dark Theme ── */
+            QMainWindow { background-color: #1E1E2E; }
+            QWidget { color: #CDD6F4; }
+
+            QGroupBox {
+                font-weight: bold;
+                border: 1px solid #45475A;
+                border-radius: 6px;
+                margin-top: 10px;
+                padding-top: 18px;
+                background-color: #2A2A3C;
+            }
+            QGroupBox::title {
+                subcontrol-origin: margin;
+                left: 12px;
+                padding: 0 6px;
+                color: #89B4FA;
+            }
+
+            QListWidget {
+                border: 1px solid #45475A;
+                border-radius: 4px;
+                background-color: #313244;
+                color: #CDD6F4;
+                font-size: 12px;
+            }
+            QListWidget::item {
+                padding: 5px 8px;
+                border-bottom: 1px solid #3B3B50;
+            }
+            QListWidget::item:selected {
+                background-color: #89B4FA;
+                color: #1E1E2E;
+            }
+            QListWidget::item:hover {
+                background-color: #3B3B50;
+            }
+
+            QPushButton {
+                background-color: #89B4FA;
+                color: #1E1E2E;
+                border: none;
+                border-radius: 4px;
+                padding: 6px 14px;
+                font-weight: bold;
+            }
+            QPushButton:hover { background-color: #74C7EC; }
+            QPushButton:pressed { background-color: #5B9BD5; }
+            QPushButton:disabled { background-color: #45475A; color: #6C7086; }
+
+            QToolBar {
+                background-color: #181825;
+                border: none;
+                border-bottom: 1px solid #313244;
+                spacing: 4px;
+                padding: 4px;
+            }
+            QToolBar QToolButton {
+                color: #CDD6F4;
+                background-color: transparent;
+                border: 1px solid transparent;
+                border-radius: 4px;
+                padding: 4px 8px;
+                font-size: 12px;
+            }
+            QToolBar QToolButton:hover {
+                background-color: #313244;
+                border-color: #89B4FA;
+            }
+
+            QMenuBar {
+                background-color: #181825;
+                color: #CDD6F4;
+                border-bottom: 1px solid #313244;
+            }
+            QMenuBar::item:selected { background-color: #313244; }
+            QMenu {
+                background-color: #2A2A3C;
+                border: 1px solid #45475A;
+                color: #CDD6F4;
+            }
+            QMenu::item:selected { background-color: #89B4FA; color: #1E1E2E; }
+            QMenu::separator { background-color: #45475A; height: 1px; margin: 4px 8px; }
+
+            QStatusBar {
+                background-color: #181825;
+                color: #A6ADC8;
+                border-top: 1px solid #313244;
+            }
+
+            QComboBox {
+                border: 1px solid #45475A;
+                border-radius: 4px;
+                padding: 5px 8px;
+                background-color: #313244;
+                color: #CDD6F4;
+            }
+            QComboBox:hover { border-color: #89B4FA; }
+            QComboBox::drop-down {
+                border: none;
+                width: 20px;
+            }
+            QComboBox QAbstractItemView {
+                background-color: #313244;
+                border: 1px solid #45475A;
+                color: #CDD6F4;
+                selection-background-color: #89B4FA;
+                selection-color: #1E1E2E;
+            }
+
+            QLineEdit, QPlainTextEdit, QTextEdit, QSpinBox, QDoubleSpinBox {
+                background-color: #313244;
+                border: 1px solid #45475A;
+                border-radius: 4px;
+                padding: 5px 8px;
+                color: #CDD6F4;
+            }
+            QLineEdit:focus, QPlainTextEdit:focus, QTextEdit:focus {
+                border-color: #89B4FA;
+            }
+
+            QLabel { color: #CDD6F4; }
+
+            QCheckBox { color: #CDD6F4; spacing: 6px; }
+            QCheckBox::indicator {
+                width: 16px; height: 16px;
+                border: 1px solid #45475A;
+                border-radius: 3px;
+                background-color: #313244;
+            }
+            QCheckBox::indicator:checked {
+                background-color: #89B4FA;
+                border-color: #89B4FA;
+            }
+
+            QProgressBar {
+                border: 1px solid #45475A;
+                border-radius: 4px;
+                text-align: center;
+                background-color: #313244;
+                color: #CDD6F4;
+            }
+            QProgressBar::chunk {
+                background-color: #89B4FA;
+                border-radius: 3px;
+            }
+
+            QSplitter::handle { background-color: #313244; width: 2px; }
+
+            QScrollBar:vertical {
+                background-color: #1E1E2E;
+                width: 10px;
+                border: none;
+            }
+            QScrollBar::handle:vertical {
+                background-color: #45475A;
+                border-radius: 5px;
+                min-height: 20px;
+            }
+            QScrollBar::handle:vertical:hover { background-color: #585B70; }
+            QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { height: 0; }
+
+            QScrollBar:horizontal {
+                background-color: #1E1E2E;
+                height: 10px;
+                border: none;
+            }
+            QScrollBar::handle:horizontal {
+                background-color: #45475A;
+                border-radius: 5px;
+                min-width: 20px;
+            }
+            QScrollBar::handle:horizontal:hover { background-color: #585B70; }
+            QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { width: 0; }
+
+            QDialogButtonBox QPushButton {
+                min-width: 80px;
+                padding: 6px 16px;
+            }
+
+            QTabWidget::pane {
+                border: 1px solid #45475A;
+                background-color: #2A2A3C;
+            }
+            QTabBar::tab {
+                background-color: #313244;
+                color: #CDD6F4;
+                padding: 6px 16px;
+                border: 1px solid #45475A;
+                border-bottom: none;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+            }
+            QTabBar::tab:selected {
+                background-color: #2A2A3C;
+                color: #89B4FA;
+            }
+
+            QSlider::groove:horizontal {
+                border: none;
+                height: 4px;
+                background-color: #45475A;
+                border-radius: 2px;
+            }
+            QSlider::handle:horizontal {
+                background-color: #89B4FA;
+                width: 14px;
+                height: 14px;
+                margin: -5px 0;
+                border-radius: 7px;
+            }
+            QSlider::handle:horizontal:hover { background-color: #74C7EC; }
+        """)
+
+    # ─── LAYER ACTIONS ───
+
+    def _add_layer(self):
+        dlg = AddLayerDialog(self.project, self)
+        if dlg.exec():
+            data = dlg.get_data()
+            if data["name"]:
+                self.project.add_layer(data["name"], data["color"])
+                self._refresh_all()
+
+    def _remove_layer(self):
+        item = self.layers_list.currentItem()
+        if not item:
+            return
+        layer_id = item.data(Qt.UserRole)
+        reply = QMessageBox.question(
+            self, "Remover Camada",
+            f"Remover a camada '{item.text()}'?\n"
+            "Atores exclusivos desta camada serão removidos.",
+            QMessageBox.Yes | QMessageBox.No
+        )
+        if reply == QMessageBox.Yes:
+            self.project.remove_layer(layer_id)
+            self._refresh_all()
+
+    def _move_layer_up(self):
+        """Aumenta a ordem da camada selecionada (move para cima na cena)."""
+        item = self.layers_list.currentItem()
+        if not item:
+            return
+        layer_id = item.data(Qt.UserRole)
+        layers = sorted(self.project.layers, key=lambda l: l.order)
+        idx = next((i for i, l in enumerate(layers) if l.id == layer_id), None)
+        if idx is None or idx >= len(layers) - 1:
+            return  # já é a camada do topo
+        # Troca a ordem com a camada acima
+        layers[idx].order, layers[idx + 1].order = layers[idx + 1].order, layers[idx].order
+        self._refresh_layers_list()
+        self.scene.set_project(self.project)
+        self._fit_all()
+        # Re-selecionar a camada movida
+        for i in range(self.layers_list.count()):
+            if self.layers_list.item(i).data(Qt.UserRole) == layer_id:
+                self.layers_list.setCurrentRow(i)
+                break
+
+    def _move_layer_down(self):
+        """Diminui a ordem da camada selecionada (move para baixo na cena)."""
+        item = self.layers_list.currentItem()
+        if not item:
+            return
+        layer_id = item.data(Qt.UserRole)
+        layers = sorted(self.project.layers, key=lambda l: l.order)
+        idx = next((i for i, l in enumerate(layers) if l.id == layer_id), None)
+        if idx is None or idx == 0:
+            return  # já é a camada mais baixa
+        # Troca a ordem com a camada abaixo
+        layers[idx].order, layers[idx - 1].order = layers[idx - 1].order, layers[idx].order
+        self._refresh_layers_list()
+        self.scene.set_project(self.project)
+        self._fit_all()
+        # Re-selecionar a camada movida
+        for i in range(self.layers_list.count()):
+            if self.layers_list.item(i).data(Qt.UserRole) == layer_id:
+                self.layers_list.setCurrentRow(i)
+                break
+
+    def _on_layer_selected(self, item):
+        layer_id = item.data(Qt.UserRole)
+        layer = self.project.get_layer_by_id(layer_id)
+        if layer:
+            actors = self.project.get_actors_in_layer(layer_id)
+            rels = self.project.get_relationships_in_layer(layer_id)
+            self.props_label.setText(
+                f"Camada: {layer.name}\n"
+                f"Ordem: {layer.order}\n"
+                f"Atores: {len(actors)}\n"
+                f"Relações: {len(rels)}"
+            )
+
+    # ─── ACTOR ACTIONS ───
+
+    def _add_actor(self):
+        if not self.project.layers:
+            QMessageBox.warning(self, "Aviso", "Adicione pelo menos uma camada primeiro.")
+            return
+        dlg = AddActorDialog(self.project, custom_types=self._custom_actor_types, parent=self)
+        if dlg.exec():
+            data = dlg.get_data()
+            if data["name"]:
+                self.project.add_actor(data["name"], data["actor_type"], data["layers"])
+                self._refresh_all()
+
+    def _edit_actor(self, item=None):
+        if not item:
+            item = self.actors_list.currentItem()
+        if not item:
+            return
+        actor_id = item.data(Qt.UserRole)
+        actor = self.project.actors.get(actor_id)
+        if not actor:
+            return
+        dlg = AddActorDialog(self.project, actor,
+                             custom_types=self._custom_actor_types, parent=self)
+        if dlg.exec():
+            data = dlg.get_data()
+            actor.name = data["name"]
+            actor.actor_type = data["actor_type"]
+            actor.layers = data["layers"]
+            self._refresh_all()
+
+    def _manage_actor_types(self):
+        dlg = ActorTypeManagerDialog(self._custom_actor_types, self)
+        dlg.exec()
+        self._custom_actor_types = dlg.get_custom_types()
+
+    def _remove_actor(self):
+        item = self.actors_list.currentItem()
+        if not item:
+            return
+        actor_id = item.data(Qt.UserRole)
+        reply = QMessageBox.question(
+            self, "Remover Ator",
+            f"Remover '{item.text()}' e todas as suas relações?",
+            QMessageBox.Yes | QMessageBox.No
+        )
+        if reply == QMessageBox.Yes:
+            self.project.remove_actor(actor_id)
+            self._refresh_all()
+
+    def _on_actor_selected(self, item):
+        actor_id = item.data(Qt.UserRole)
+        actor = self.project.actors.get(actor_id)
+        if actor:
+            layer_names = []
+            for lid in actor.layers:
+                l = self.project.get_layer_by_id(lid)
+                if l:
+                    layer_names.append(l.name)
+            rels = self.project.get_actor_relationships(actor_id)
+            text = (
+                f"Ator: {actor.name}\n"
+                f"Tipo: {actor.actor_type}\n"
+                f"Camadas: {', '.join(layer_names)}\n"
+                f"Relações: {len(rels)}"
+            )
+            # Centrality
+            try:
+                engine = GraphEngine(self.project)
+                cent = engine.get_actor_centrality(actor_id)
+                for lid, metrics in cent.items():
+                    l = self.project.get_layer_by_id(lid)
+                    if l:
+                        text += f"\n  {l.name}: grau={metrics['degree']}, cent={metrics['degree_centrality']:.3f}"
+            except:
+                pass
+            self.props_label.setText(text)
+
+    # ─── RELATION ACTIONS ───
+
+    def _add_relation(self):
+        if len(self.project.actors) < 2:
+            QMessageBox.warning(self, "Aviso", "Adicione pelo menos dois atores primeiro.")
+            return
+        dlg = AddRelationDialog(self.project, parent=self)
+        if dlg.exec():
+            data = dlg.get_data()
+            self.project.add_relationship(**data)
+            self._refresh_all()
+
+    def _edit_relation(self, item=None):
+        if not item:
+            item = self.relations_list.currentItem()
+        if not item:
+            return
+        rel_id = item.data(Qt.UserRole)
+        rel = None
+        for r in self.project.relationships:
+            if r.id == rel_id:
+                rel = r
+                break
+        if not rel:
+            return
+        dlg = AddRelationDialog(self.project, rel, parent=self)
+        if dlg.exec():
+            data = dlg.get_data()
+            # Update relationship
+            rel.source_id = data["source_id"]
+            rel.target_id = data["target_id"]
+            rel.layer_id = data["layer_id"]
+            rel.rel_type = data["rel_type"]
+            rel.direction = data["direction"]
+            rel.label = data["label"]
+            rel.weight = data["weight"]
+            rel.source_layer_id = data["source_layer_id"]
+            rel.target_layer_id = data["target_layer_id"]
+            self._refresh_all()
+
+    def _remove_relation(self):
+        item = self.relations_list.currentItem()
+        if not item:
+            return
+        rel_id = item.data(Qt.UserRole)
+        self.project.remove_relationship(rel_id)
+        self._refresh_all()
+
+    # ─── EXTRACTION ───
+
+    def _run_extraction(self):
+        dlg = ExtractionDialog(self.project, self)
+        dlg.extraction_done.connect(self._apply_extraction)
+        dlg.exec()
+
+    def _apply_extraction(self, result: dict):
+        from extraction.llm_extractor import apply_extraction_to_project
+
+        # Create layers if needed
+        for actor_data in result.get("actors", []):
+            for layer_name in actor_data.get("layers", []):
+                if not self.project.get_layer_by_name(layer_name.strip()):
+                    self.project.add_layer(layer_name.strip())
+
+        # Also from relations
+        for rel in result.get("intra_layer_relations", []):
+            ln = rel.get("layer", "").strip()
+            if ln and not self.project.get_layer_by_name(ln):
+                self.project.add_layer(ln)
+        for rel in result.get("inter_layer_relations", []):
+            for key in ("source_layer", "target_layer"):
+                ln = rel.get(key, "").strip()
+                if ln and not self.project.get_layer_by_name(ln):
+                    self.project.add_layer(ln)
+
+        apply_extraction_to_project(self.project, result)
+        self._recalculate_layout()
+        self._refresh_all()
+        self.statusbar.showMessage("Extração aplicada com sucesso!", 5000)
+
+    # ─── LAYOUT & REFRESH ───
+
+    def _recalculate_layout(self):
+        engine = GraphEngine(self.project)
+        algorithm = self.layout_combo.currentText()
+        engine.compute_all_layouts(
+            width=600,
+            height=400,
+            algorithm=algorithm
+        )
+        self.scene.set_project(self.project)
+        self._fit_all()
+        self._update_metrics()
+
+    def _refresh_all(self):
+        """Refresh all UI elements."""
+        self._refresh_layers_list()
+        self._refresh_actors_list()
+        self._refresh_relations_list()
+        self._recalculate_layout()
+        self._update_statusbar()
+
+    def _refresh_layers_list(self):
+        self.layers_list.clear()
+        for layer in sorted(self.project.layers, key=lambda l: l.order):
+            n_actors = len(self.project.get_actors_in_layer(layer.id))
+            item = QListWidgetItem(f"  {layer.name} ({n_actors} atores)")
+            item.setData(Qt.UserRole, layer.id)
+            item.setForeground(QColor(layer.color))
+            self.layers_list.addItem(item)
+        self._refresh_isolate_combo()
+
+    def _refresh_actors_list(self):
+        self.actors_list.clear()
+        for actor in sorted(self.project.actors.values(), key=lambda a: a.name):
+            color = actor.color or ACTOR_TYPE_COLORS.get(actor.actor_type, "#4A90D9")
+            item = QListWidgetItem(f"  {actor.name}")
+            item.setData(Qt.UserRole, actor.id)
+            item.setToolTip(f"Tipo: {actor.actor_type} | Camadas: {len(actor.layers)}")
+            item.setForeground(QColor(color))
+            self.actors_list.addItem(item)
+
+    def _refresh_relations_list(self):
+        self.relations_list.clear()
+        for rel in self.project.relationships:
+            src = self.project.actors.get(rel.source_id)
+            tgt = self.project.actors.get(rel.target_id)
+            if not src or not tgt:
+                continue
+
+            if rel.is_inter_layer:
+                sl = self.project.get_layer_by_id(rel.source_layer_id)
+                tl = self.project.get_layer_by_id(rel.target_layer_id)
+                text = f"  {src.name} → {tgt.name} [{rel.rel_type}] (inter)"
+            else:
+                layer = self.project.get_layer_by_id(rel.layer_id)
+                ln = layer.name if layer else "?"
+                arrow = "↔" if rel.direction == "bidirectional" else "→"
+                text = f"  {src.name} {arrow} {tgt.name} [{rel.rel_type}] ({ln})"
+
+            style = RELATION_TYPE_STYLES.get(rel.rel_type, {})
+            item = QListWidgetItem(text)
+            item.setData(Qt.UserRole, rel.id)
+            item.setForeground(QColor(style.get("color", "#7F8C8D")))
+            self.relations_list.addItem(item)
+
+    def _update_statusbar(self):
+        n_layers = len(self.project.layers)
+        n_actors = len(self.project.actors)
+        n_rels = len(self.project.relationships)
+        self.statusbar.showMessage(
+            f"  {self.project.name} | "
+            f"{n_layers} camadas | {n_actors} atores | {n_rels} relações"
+        )
+
+    def _update_metrics(self):
+        if not self.project.layers:
+            self.metrics_label.setText("Adicione camadas e atores\npara ver métricas.")
+            return
+        try:
+            engine = GraphEngine(self.project)
+            text = ""
+            for layer in self.project.layers:
+                m = engine.get_layer_metrics(layer.id)
+                text += (
+                    f"▸ {layer.name}\n"
+                    f"  Nós: {m['nodes']} | Arestas: {m['edges']}\n"
+                    f"  Densidade: {m['density']:.4f}\n"
+                )
+            stats = engine.get_cross_layer_stats()
+            if stats["shared_actors"]:
+                text += "\n▸ Inter-Camada\n"
+                for pair, count in stats["shared_actors"].items():
+                    text += f"  {pair}: {count} compartilhados\n"
+            self.metrics_label.setText(text)
+        except Exception as e:
+            self.metrics_label.setText(f"Erro: {str(e)[:100]}")
+
+    # ─── FILE OPERATIONS ───
+
+    def _new_project(self):
+        reply = QMessageBox.question(
+            self, "Novo Projeto",
+            "Criar novo projeto? Mudanças não salvas serão perdidas.",
+            QMessageBox.Yes | QMessageBox.No
+        )
+        if reply == QMessageBox.Yes:
+            self.project = Project(name="Novo Projeto")
+            self._current_file = None
+            self._refresh_all()
+
+    def _open_project(self):
+        path, _ = QFileDialog.getOpenFileName(
+            self, "Abrir Projeto",
+            "", "Projeto MultilayerEco (*.mleco *.json)"
+        )
+        if path:
+            try:
+                self.project = Project.load(path)
+                self._current_file = path
+                self._refresh_all()
+                self.statusbar.showMessage(f"Projeto carregado: {path}", 5000)
+            except Exception as e:
+                QMessageBox.critical(self, "Erro", f"Erro ao abrir: {e}")
+
+    def _save_project(self):
+        if self._current_file:
+            try:
+                self.project.save(self._current_file)
+                self.statusbar.showMessage(f"Salvo: {self._current_file}", 5000)
+            except Exception as e:
+                QMessageBox.critical(self, "Erro", f"Erro ao salvar: {e}")
+        else:
+            self._save_project_as()
+
+    def _save_project_as(self):
+        path, _ = QFileDialog.getSaveFileName(
+            self, "Salvar Projeto",
+            f"{self.project.name}.mleco",
+            "Projeto MultilayerEco (*.mleco);;JSON (*.json)"
+        )
+        if path:
+            try:
+                self.project.save(path)
+                self._current_file = path
+                self.statusbar.showMessage(f"Salvo: {path}", 5000)
+            except Exception as e:
+                QMessageBox.critical(self, "Erro", f"Erro ao salvar: {e}")
+
+    # ─── EXPORT ───
+
+    def _export_png(self):
+        path, _ = QFileDialog.getSaveFileName(
+            self, "Exportar Imagem", "ecossistema.png",
+            "PNG (*.png)"
+        )
+        if path:
+            self.view.export_to_image(path)
+            self.statusbar.showMessage(f"Imagem exportada: {path}", 5000)
+
+    def _export_json(self):
+        path, _ = QFileDialog.getSaveFileName(
+            self, "Exportar JSON", f"{self.project.name}.json",
+            "JSON (*.json)"
+        )
+        if path:
+            export_json(self.project, path)
+            self.statusbar.showMessage(f"JSON exportado: {path}", 5000)
+
+    def _export_actors_csv(self):
+        path, _ = QFileDialog.getSaveFileName(
+            self, "Exportar Atores CSV", "atores.csv", "CSV (*.csv)"
+        )
+        if path:
+            export_actors_csv(self.project, path)
+            self.statusbar.showMessage(f"CSV exportado: {path}", 5000)
+
+    def _export_relations_csv(self):
+        path, _ = QFileDialog.getSaveFileName(
+            self, "Exportar Relações CSV", "relacoes.csv", "CSV (*.csv)"
+        )
+        if path:
+            export_relationships_csv(self.project, path)
+            self.statusbar.showMessage(f"CSV exportado: {path}", 5000)
+
+    def _export_metrics_csv(self):
+        path, _ = QFileDialog.getSaveFileName(
+            self, "Exportar Métricas CSV", "metricas.csv", "CSV (*.csv)"
+        )
+        if path:
+            export_metrics_csv(self.project, path)
+            self.statusbar.showMessage(f"CSV exportado: {path}", 5000)
+
+    # ─── ZOOM CONTROLS ───
+
+    def _fit_all(self):
+        """Fit all content in view and sync slider."""
+        self.view.fit_all()
+        self.zoom_slider.blockSignals(True)
+        self.zoom_slider.setValue(0)
+        self.zoom_slider.blockSignals(False)
+        self.zoom_label.setText("100%")
+
+    def _on_zoom_slider(self, value: int):
+        """Sync zoom slider → view."""
+        self.view.set_zoom_level(value)
+        pct = int(100 * (self.view.ZOOM_FACTOR ** value))
+        self.zoom_label.setText(f"{pct}%")
+
+    def _sync_zoom_slider(self, level: int):
+        """Called by view when zoom changes via wheel."""
+        self.zoom_slider.blockSignals(True)
+        self.zoom_slider.setValue(level)
+        self.zoom_slider.blockSignals(False)
+        pct = int(100 * (self.view.ZOOM_FACTOR ** level))
+        self.zoom_label.setText(f"{pct}%")
+
+    # ─── LAYER ISOLATION (2D) ───
+
+    def _refresh_isolate_combo(self):
+        """Atualiza o combo de camada isolada, preservando a seleção."""
+        if not hasattr(self, "isolate_combo"):
+            return
+        prev = self.isolate_combo.currentData()
+        self.isolate_combo.blockSignals(True)
+        self.isolate_combo.clear()
+        self.isolate_combo.addItem("Todas as camadas", None)
+        for layer in sorted(self.project.layers, key=lambda l: l.order):
+            self.isolate_combo.addItem(layer.name, layer.id)
+        idx = 0
+        if prev:
+            for i in range(self.isolate_combo.count()):
+                if self.isolate_combo.itemData(i) == prev:
+                    idx = i
+                    break
+        self.isolate_combo.setCurrentIndex(idx)
+        self.isolate_combo.blockSignals(False)
+        # Sincroniza a cena sem disparar rebuild extra (o layout faz o rebuild)
+        self.scene.isolated_layer_id = self.isolate_combo.currentData() or None
+
+    def _on_isolate_changed(self, index: int):
+        layer_id = self.isolate_combo.currentData()
+        self.scene.set_isolated_layer(layer_id)
+        self._fit_all()
+
+    # ─── COMPARISON ───
+
+    def _open_comparison(self):
+        """Abre a janela de comparação de dois ecossistemas lado a lado."""
+        self._cmp_win = ComparisonWindow(self.project, self)
+        self._cmp_win.setWindowFlag(Qt.Window, True)
+        self._cmp_win.show()
+        self._cmp_win.raise_()
+        self._cmp_win.activateWindow()
+
+    # ─── SNAPSHOTS ("MOMENTOS") ───
+
+    def _save_snapshot(self):
+        if not self.project.layers:
+            QMessageBox.warning(self, "Aviso",
+                                "Adicione camadas e atores antes de salvar um momento.")
+            return
+        default = f"Momento {len(self.project.snapshots) + 1}"
+        name, ok = QInputDialog.getText(
+            self, "Salvar Momento",
+            "Nome do momento (ex.: Antes, Depois, 2023):", text=default
+        )
+        if ok and name.strip():
+            existed = self.project.get_snapshot_data(name.strip()) is not None
+            self.project.add_snapshot(name.strip())
+            verb = "atualizado" if existed else "salvo"
+            self.statusbar.showMessage(f"Momento '{name.strip()}' {verb}.", 5000)
+
+    def _manage_snapshots(self):
+        dlg = QDialog(self)
+        dlg.setWindowTitle("Gerenciar Momentos")
+        dlg.setMinimumWidth(360)
+        v = QVBoxLayout(dlg)
+        info = QLabel("Momentos salvos neste projeto:")
+        v.addWidget(info)
+        lst = QListWidget()
+        for n in self.project.list_snapshots():
+            lst.addItem(n)
+        v.addWidget(lst)
+        btns = QHBoxLayout()
+        ren = QPushButton("Renomear")
+        rem = QPushButton("Remover")
+        btns.addWidget(ren)
+        btns.addWidget(rem)
+        btns.addStretch()
+        v.addLayout(btns)
+        bb = QDialogButtonBox(QDialogButtonBox.Close)
+        v.addWidget(bb)
+
+        def do_ren():
+            it = lst.currentItem()
+            if not it:
+                return
+            new, ok = QInputDialog.getText(dlg, "Renomear", "Novo nome:", text=it.text())
+            if ok and new.strip():
+                self.project.rename_snapshot(it.text(), new.strip())
+                it.setText(new.strip())
+
+        def do_rem():
+            it = lst.currentItem()
+            if not it:
+                return
+            self.project.remove_snapshot(it.text())
+            lst.takeItem(lst.row(it))
+
+        ren.clicked.connect(do_ren)
+        rem.clicked.connect(do_rem)
+        bb.rejected.connect(dlg.reject)
+        bb.accepted.connect(dlg.accept)
+        dlg.exec()
+
+    # ─── SETTINGS ───
+
+    def _show_settings(self):
+        dlg = SettingsDialog(self.settings, self)
+        if dlg.exec():
+            self.settings.update(dlg.get_settings())
+            self.scene.use_isometric = self.settings.get("isometric", True)
+            self._recalculate_layout()
